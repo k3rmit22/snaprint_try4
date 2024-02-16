@@ -10,25 +10,24 @@ using System.Windows.Forms;
 
 namespace snaprint_try4
 {
-    public partial class file_explorer : Form
+    public partial class loading : Form
     {
-        public file_explorer()
+        public loading()
         {
             InitializeComponent();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void loading_Load(object sender, EventArgs e)
         {
-           preferences next = new preferences();
-            next.Show();
-            this.Hide();
+
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
-            browse prev = new browse();
-            prev.Show();
+            snaprint_landing next = new snaprint_landing();
+            next.Show();
             this.Hide();
+
         }
     }
 }

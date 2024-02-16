@@ -34,7 +34,7 @@ namespace snaprint_try4
 
         private void DeviceRemovedEvent(object sender, EventArrivedEventArgs e)
         {
-          //MessageBox.Show("USB device removed event triggered!"); // Debugging message
+         // MessageBox.Show("USB device removed event triggered!"); // Debugging message
 
             this.Invoke((MethodInvoker)delegate
             {
@@ -64,5 +64,32 @@ namespace snaprint_try4
             base.OnFormClosing(e);
             removalWatcher.Stop();
         }
+
+     
+        public static int parentX, parentY;
+
+        private void modal_Click(object sender, EventArgs e)
+        {
+            Form modalBackgound = new Form();
+            using (modal modal = new modal())
+            {
+                modalBackgound.StartPosition = FormStartPosition.Manual;
+                modalBackgound.FormBorderStyle = FormBorderStyle.None;
+                modalBackgound.Opacity = .50d;
+                modalBackgound.BackColor = Color.Black;
+                modalBackgound.Size = this.Size;
+                modalBackgound.Location = this.Location;
+                modalBackgound.ShowInTaskbar = false;
+                modalBackgound.Show();
+                modal.Owner = modalBackgound;
+
+                parentX = this.Location.X;
+                parentY = this.Location.Y;
+
+                modal.ShowDialog();
+                modalBackgound.Dispose();
+            }
+        }
     }
-}
+ }
+
