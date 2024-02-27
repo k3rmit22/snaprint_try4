@@ -4,12 +4,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Management;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MetroFramework;
-using MetroFramework.Forms;
+using System.Management;
 
 
 namespace snaprint_try4
@@ -22,7 +20,24 @@ namespace snaprint_try4
         {
             InitializeComponent();
             InitializeRemovalWatcher();
+            InitializeKioskMode();
+
         }
+        private void InitializeKioskMode()
+        {
+            // Set the form to cover the entire screen
+            this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = FormBorderStyle.None;
+
+            // Disable Alt+F4 to prevent closing the application
+            this.KeyPreview = true;
+            this.KeyDown += (s, e) =>
+            {
+                if (e.Alt && e.KeyCode == Keys.F4)
+                    e.Handled = true;
+            };
+        }
+
 
         private void InitializeRemovalWatcher()
         {
@@ -32,22 +47,44 @@ namespace snaprint_try4
             removalWatcher.Start();
         }
 
+        private bool isEventHandled = false;
+
         private void DeviceRemovedEvent(object sender, EventArrivedEventArgs e)
         {
-         // MessageBox.Show("USB device removed event triggered!"); // Debugging message
-
+            // Ensure the event handler runs on the UI thread
             this.Invoke((MethodInvoker)delegate
             {
-                // Display the snaprint_landing form
-                snaprint_landing landingForm = new snaprint_landing();
-                landingForm.Show();
+                try
+                {
+                    // Hide the current form (browse)
+                    this.Hide();
 
-                // Close the current form
-                this.Close();
+                    // Check if a snaprint_landing form is already open
+                    snaprint_landing landingForm = Application.OpenForms.OfType<snaprint_landing>().FirstOrDefault();
+                    if (landingForm == null)
+                    {
+                        // If snaprint_landing form is not already open, create and show it
+                        landingForm = new snaprint_landing();
+                        landingForm.Show();
+                    }
+                    else
+                    {
+                        // If snaprint_landing form is already open, bring it to the front
+                        landingForm.BringToFront();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Error handling for any exceptions
+                    MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             });
         }
 
-        private void browse_Load(object sender, EventArgs e)
+
+
+
+    private void browse_Load(object sender, EventArgs e)
         {
 
         }
@@ -82,7 +119,6 @@ namespace snaprint_try4
                 modalBackgound.ShowInTaskbar = false;
                 modalBackgound.Show();
                 modal.Owner = modalBackgound;
-
                 parentX = this.Location.X;
                 parentY = this.Location.Y;
 

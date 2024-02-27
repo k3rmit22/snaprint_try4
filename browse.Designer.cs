@@ -51,7 +51,7 @@
             // 
             this.pdf_logo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pdf_logo.Image = ((System.Drawing.Image)(resources.GetObject("pdf_logo.Image")));
-            this.pdf_logo.Location = new System.Drawing.Point(415, 198);
+            this.pdf_logo.Location = new System.Drawing.Point(391, 198);
             this.pdf_logo.Name = "pdf_logo";
             this.pdf_logo.Size = new System.Drawing.Size(352, 257);
             this.pdf_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -64,7 +64,7 @@
             this.label_browse.AutoSize = true;
             this.label_browse.Font = new System.Drawing.Font("Bookman Old Style", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_browse.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label_browse.Location = new System.Drawing.Point(439, 480);
+            this.label_browse.Location = new System.Drawing.Point(413, 477);
             this.label_browse.Name = "label_browse";
             this.label_browse.Size = new System.Drawing.Size(317, 32);
             this.label_browse.TabIndex = 2;
@@ -74,7 +74,7 @@
             // broswe_button
             // 
             this.broswe_button.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.broswe_button.Location = new System.Drawing.Point(528, 541);
+            this.broswe_button.Location = new System.Drawing.Point(507, 542);
             this.broswe_button.Name = "broswe_button";
             this.broswe_button.Size = new System.Drawing.Size(128, 51);
             this.broswe_button.TabIndex = 3;

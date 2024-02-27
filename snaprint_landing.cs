@@ -14,19 +14,37 @@ namespace snaprint_try4
     public partial class snaprint_landing : Form
     {
         private ManagementEventWatcher watcher;
+        private bool usbDeviceInserted = false; // Flag to track if USB device is already inserted
 
         public snaprint_landing()
         {
             InitializeComponent();
+            InitializeKioskMode();
+            InitializeUSBWatcher();
+        }
+        private void InitializeKioskMode()
+        {
+            // Set the form to cover the entire screen
+            this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = FormBorderStyle.None;
 
+            // Disable Alt+F4 to prevent closing the application
+            this.KeyPreview = true;
+            this.KeyDown += (s, e) =>
+            {
+                if (e.Alt && e.KeyCode == Keys.F4)
+                    e.Handled = true;
+            };
+        }
+
+        private void InitializeUSBWatcher()
+        {
             // Initialize USB device insertion event watcher
             watcher = new ManagementEventWatcher();
-            watcher.EventArrived += new EventArrivedEventHandler(DeviceInsertedEvent);
+            watcher.EventArrived += DeviceInsertedEvent;
             watcher.Query = new WqlEventQuery("SELECT * FROM __InstanceCreationEvent WITHIN 2 WHERE TargetInstance ISA 'Win32_USBControllerDevice'");
             watcher.Start();
-
         }
-        private bool usbDeviceInserted = false; // Flag to track if USB device is already inserted
 
         private void DeviceInsertedEvent(object sender, EventArrivedEventArgs e)
         {
@@ -35,8 +53,6 @@ namespace snaprint_try4
                 // Check if USB device insertion event is already handled
                 if (usbDeviceInserted)
                     return;
-
-               //MessageBox.Show("USB device inserted!"); // Debugging message
 
                 // Set flag to indicate USB device insertion is handled
                 usbDeviceInserted = true;
@@ -65,9 +81,7 @@ namespace snaprint_try4
             timer1.Enabled = true;
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-        }
+    
 
         private void label3_Click(object sender, EventArgs e)
         {
@@ -107,13 +121,7 @@ namespace snaprint_try4
 
         public static int parentX, parentY;
 
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-            login next = new login();
-            next.Show();
-            this.Hide();
 
-        }
 
         private void modal_Click(object sender, EventArgs e)
         {
@@ -137,5 +145,7 @@ namespace snaprint_try4
                 modalBackgound.Dispose();
             }
         }
+
+   
     }
 }

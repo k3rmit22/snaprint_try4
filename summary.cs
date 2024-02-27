@@ -30,6 +30,8 @@ namespace snaprint_try4
             prev.Show();
             this.Hide();
         }
+
+    
     }
  
 }

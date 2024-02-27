@@ -17,8 +17,6 @@ namespace snaprint_try4
             InitializeComponent();
         }
 
-
-
         private void modalEffect_Timer_Tick(object sender, EventArgs e)
         {
             if (Opacity >= 1)
@@ -30,18 +28,21 @@ namespace snaprint_try4
                 Opacity += .04;
             }
 
-            int y = snaprint_landing.parentY += 3;
-            this.Location = new Point(snaprint_landing.parentX + 220, y);
-            if (y >= i)
+            // Center the modal both horizontally and vertically
+            this.CenterToScreen();
+
+            if (this.Top >= i)
             {
                 modalEffect_Timer.Stop();
             }
         }
+
         int i;
         private void modal_Load(object sender, EventArgs e)
         {
-            i = snaprint_landing.parentY + 150;
-            this.Location = new Point(snaprint_landing.parentX+220, snaprint_landing.parentY +150);    
+            i = this.Top + 150; // Adjust for desired final position
+            this.StartPosition = FormStartPosition.CenterScreen; // Set initial position to center
+            this.Location = new Point(this.Left + 220, this.Top + 150); // Adjust for animation
         }
 
         private void close_icon_Click(object sender, EventArgs e)
