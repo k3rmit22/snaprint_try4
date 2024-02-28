@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Management;
+using System.IO;
 
 namespace snaprint_try4
 {
@@ -46,6 +47,7 @@ namespace snaprint_try4
             watcher.Start();
         }
 
+
         private void DeviceInsertedEvent(object sender, EventArrivedEventArgs e)
         {
             try
@@ -60,19 +62,38 @@ namespace snaprint_try4
                 // Execute UI-related code on the main thread
                 this.Invoke((MethodInvoker)delegate
                 {
-                    // Create and show the browse form
-                    browse nextForm = new browse();
-                    nextForm.Show();
-
-                    // Hide the current form instead of closing it
+                    // Close the current form
                     this.Hide();
+
+                    // Check if a browse form is already open
+                    browse nextForm = Application.OpenForms.OfType<browse>().FirstOrDefault();
+                    if (nextForm == null)
+                    {
+                        // If browse form is not already open, create and show it
+                        nextForm = new browse();
+                        nextForm.Show();
+                    }
+                    else
+                    {
+                        // If browse form is already open, bring it to the front and show it
+                        nextForm.BringToFront();
+                        nextForm.Show();
+                    }
                 });
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred: " + ex.Message);
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+            watcher.Stop();
+        }
+
+
 
 
         private void snaprint_Load(object sender, EventArgs e)
@@ -113,11 +134,6 @@ namespace snaprint_try4
         {
         }
 
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            base.OnFormClosing(e);
-            watcher.Stop();
-        }
 
         public static int parentX, parentY;
 

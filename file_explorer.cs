@@ -78,6 +78,15 @@ namespace snaprint_try4
                 MessageBox.Show("Flash drive not detected.");
             }
         }
+
+        
+
+        private void Backbutton_Click_1(object sender, EventArgs e)
+        {
+            browse balik = new browse();
+            balik.Show();
+            this.Hide();
+        }
     }
 }
 
