@@ -29,119 +29,65 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(preferences));
-            this.papersize = new System.Windows.Forms.GroupBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.selectpapersize = new System.Windows.Forms.GroupBox();
+            this.colorofpaper = new System.Windows.Forms.GroupBox();
+            this.groupcopies = new System.Windows.Forms.GroupBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.filename = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.papersize.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.label1 = new System.Windows.Forms.Label();
+            this.combosize = new System.Windows.Forms.ComboBox();
+            this.labelpapersize = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.labelcolor = new System.Windows.Forms.Label();
+            this.combocolor = new System.Windows.Forms.ComboBox();
+            this.combocopies = new System.Windows.Forms.ComboBox();
+            this.selectpapersize.SuspendLayout();
+            this.colorofpaper.SuspendLayout();
+            this.groupcopies.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // papersize
+            // selectpapersize
             // 
-            this.papersize.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.papersize.Controls.Add(this.checkBox2);
-            this.papersize.Controls.Add(this.checkBox1);
-            this.papersize.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.papersize.Location = new System.Drawing.Point(443, 140);
-            this.papersize.Name = "papersize";
-            this.papersize.Size = new System.Drawing.Size(206, 103);
-            this.papersize.TabIndex = 4;
-            this.papersize.TabStop = false;
-            this.papersize.Text = "paper size";
+            this.selectpapersize.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.selectpapersize.Controls.Add(this.labelpapersize);
+            this.selectpapersize.Controls.Add(this.combosize);
+            this.selectpapersize.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectpapersize.Location = new System.Drawing.Point(515, 130);
+            this.selectpapersize.Name = "selectpapersize";
+            this.selectpapersize.Size = new System.Drawing.Size(265, 122);
+            this.selectpapersize.TabIndex = 4;
+            this.selectpapersize.TabStop = false;
             // 
-            // checkBox2
+            // colorofpaper
             // 
-            this.checkBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(68, 64);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(68, 29);
-            this.checkBox2.TabIndex = 1;
-            this.checkBox2.Text = "long";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.colorofpaper.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.colorofpaper.Controls.Add(this.combocolor);
+            this.colorofpaper.Controls.Add(this.labelcolor);
+            this.colorofpaper.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colorofpaper.Location = new System.Drawing.Point(515, 402);
+            this.colorofpaper.Name = "colorofpaper";
+            this.colorofpaper.Size = new System.Drawing.Size(272, 92);
+            this.colorofpaper.TabIndex = 5;
+            this.colorofpaper.TabStop = false;
             // 
-            // checkBox1
+            // groupcopies
             // 
-            this.checkBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(68, 29);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(74, 29);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "short";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupBox1.Controls.Add(this.checkBox3);
-            this.groupBox1.Controls.Add(this.checkBox4);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(443, 268);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(470, 227);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "color";
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(68, 65);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(346, 29);
-            this.checkBox3.TabIndex = 4;
-            this.checkBox3.Text = "COLORED - 10.OO PESOS/PAGE ";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(68, 133);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(339, 29);
-            this.checkBox4.TabIndex = 3;
-            this.checkBox4.Text = "GRAYSCALE -5.00 PESOS/PAGE";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupBox2.Controls.Add(this.numericUpDown1);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(709, 140);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(204, 103);
-            this.groupBox2.TabIndex = 5;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "copies";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.numericUpDown1.Location = new System.Drawing.Point(43, 47);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 30);
-            this.numericUpDown1.TabIndex = 0;
+            this.groupcopies.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupcopies.Controls.Add(this.combocopies);
+            this.groupcopies.Controls.Add(this.label3);
+            this.groupcopies.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupcopies.Location = new System.Drawing.Point(515, 258);
+            this.groupcopies.Name = "groupcopies";
+            this.groupcopies.Size = new System.Drawing.Size(272, 122);
+            this.groupcopies.TabIndex = 5;
+            this.groupcopies.TabStop = false;
             // 
             // pictureBox3
             // 
@@ -167,28 +113,40 @@
             this.pictureBox4.TabStop = false;
             this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textBox1.Location = new System.Drawing.Point(3, 337);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(244, 30);
-            this.textBox1.TabIndex = 1;
-            // 
             // groupBox3
             // 
             this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox3.Controls.Add(this.filename);
             this.groupBox3.Controls.Add(this.pictureBox1);
-            this.groupBox3.Controls.Add(this.textBox1);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(76, 125);
+            this.groupBox3.Location = new System.Drawing.Point(225, 130);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(250, 370);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             // 
+            // filename
+            // 
+            this.filename.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.filename.Location = new System.Drawing.Point(9, 334);
+            this.filename.Name = "filename";
+            this.filename.Size = new System.Drawing.Size(235, 30);
+            this.filename.TabIndex = 3;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(9, 65);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(235, 231);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Bookman Old Style", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -198,15 +156,71 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Snapprint: Public Printing Machine\r\n";
             // 
-            // pictureBox1
+            // combosize
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(9, 65);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(235, 231);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.combosize.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.combosize.FormattingEnabled = true;
+            this.combosize.Items.AddRange(new object[] {
+            "Short",
+            "Long"});
+            this.combosize.Location = new System.Drawing.Point(127, 50);
+            this.combosize.Name = "combosize";
+            this.combosize.Size = new System.Drawing.Size(121, 33);
+            this.combosize.TabIndex = 0;
+            // 
+            // labelpapersize
+            // 
+            this.labelpapersize.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelpapersize.AutoSize = true;
+            this.labelpapersize.Location = new System.Drawing.Point(7, 58);
+            this.labelpapersize.Name = "labelpapersize";
+            this.labelpapersize.Size = new System.Drawing.Size(114, 25);
+            this.labelpapersize.TabIndex = 1;
+            this.labelpapersize.Text = "Paper Size:";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(24, 53);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(80, 25);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Copies:";
+            // 
+            // labelcolor
+            // 
+            this.labelcolor.AutoSize = true;
+            this.labelcolor.Location = new System.Drawing.Point(39, 44);
+            this.labelcolor.Name = "labelcolor";
+            this.labelcolor.Size = new System.Drawing.Size(65, 25);
+            this.labelcolor.TabIndex = 0;
+            this.labelcolor.Text = "Color:";
+            // 
+            // combocolor
+            // 
+            this.combocolor.FormattingEnabled = true;
+            this.combocolor.Items.AddRange(new object[] {
+            "Colored",
+            "Greyscale"});
+            this.combocolor.Location = new System.Drawing.Point(127, 41);
+            this.combocolor.Name = "combocolor";
+            this.combocolor.Size = new System.Drawing.Size(121, 33);
+            this.combocolor.TabIndex = 1;
+            // 
+            // combocopies
+            // 
+            this.combocopies.FormattingEnabled = true;
+            this.combocopies.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.combocopies.Location = new System.Drawing.Point(127, 56);
+            this.combocopies.Name = "combocopies";
+            this.combocopies.Size = new System.Drawing.Size(121, 33);
+            this.combocopies.TabIndex = 3;
             // 
             // preferences
             // 
@@ -217,20 +231,20 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.papersize);
+            this.Controls.Add(this.groupcopies);
+            this.Controls.Add(this.colorofpaper);
+            this.Controls.Add(this.selectpapersize);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "preferences";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "preferences";
-            this.papersize.ResumeLayout(false);
-            this.papersize.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.selectpapersize.ResumeLayout(false);
+            this.selectpapersize.PerformLayout();
+            this.colorofpaper.ResumeLayout(false);
+            this.colorofpaper.PerformLayout();
+            this.groupcopies.ResumeLayout(false);
+            this.groupcopies.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.groupBox3.ResumeLayout(false);
@@ -242,19 +256,20 @@
         }
 
         #endregion
-        private System.Windows.Forms.GroupBox papersize;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.GroupBox selectpapersize;
+        private System.Windows.Forms.GroupBox colorofpaper;
+        private System.Windows.Forms.GroupBox groupcopies;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox filename;
+        private System.Windows.Forms.Label labelpapersize;
+        private System.Windows.Forms.ComboBox combosize;
+        private System.Windows.Forms.Label labelcolor;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox combocolor;
+        private System.Windows.Forms.ComboBox combocopies;
     }
 }

@@ -16,7 +16,11 @@ namespace snaprint_try4
 {
     public partial class file_explorer : Form
     {
-        private string flashDrivePath = "";
+        private string filePath = "D:";
+        private bool isFile = false;
+        private string currentlySelectedItemName = "";
+       
+
         public file_explorer()
         {
             InitializeComponent();
@@ -41,52 +45,183 @@ namespace snaprint_try4
 
         private void file_explorer_Load(object sender, EventArgs e)
         {
-            LoadFlashDrive();
+            Filepathtextbox.Text = filePath;
+            loadFilesAndDirectories();
         }
 
 
 
-        private void LoadFlashDrive()
+        public void loadFilesAndDirectories()
         {
-            DriveInfo[] drives = DriveInfo.GetDrives();
-            foreach (DriveInfo drive in drives)
+            DirectoryInfo fileList = null;
+            string tempFilePath = "";
+            FileAttributes fileAttr;
+
+            try
             {
-                if (drive.DriveType == DriveType.Removable && drive.IsReady)
+                if (isFile)
                 {
-                    flashDrivePath = drive.RootDirectory.FullName;
-                    LoadFilesFromFlashDrive();
-                    break;
+                    tempFilePath = filePath + "/" + currentlySelectedItemName;
+                    FileInfo fileDetails = new FileInfo(tempFilePath);
+                    filenamelabel.Text = fileDetails.Name;
+                    filetypelabel.Text = fileDetails.Extension;
+                    fileAttr = File.GetAttributes(tempFilePath);
+                    //Process.Start(tempFilePath); //view file but not inside the forms
+                }
+                else
+                {
+                    fileAttr = File.GetAttributes(filePath);
+
+                }
+
+
+                var drives = DriveInfo.GetDrives().Where(d => d.DriveType == DriveType.Removable);
+
+                
+                if (drives.Any())
+                {
+                    
+                    var flashDrive = drives.First();
+                    fileList = new DirectoryInfo(filePath);
+              
+                    DirectoryInfo[] dirs = fileList.GetDirectories(); // GET ALL THE DIRS
+                    
+                    listView1.Items.Clear();
+
+                    fileList = new DirectoryInfo(filePath);
+                 
+                    foreach (var file in fileList.GetFiles())
+                    {
+                        if (file.Extension.ToUpper() == ".PDF")
+                        {
+                            listView1.Items.Add(file.Name, 0);
+                        }
+                    }
+                }
+                else
+                {
+                    filenamelabel.Text = this.currentlySelectedItemName;
+                    MessageBox.Show("No flash drive detected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    snaprint_landing error = new snaprint_landing();
+                    error.Show();
+                    this.Hide();
                 }
             }
-        }
-
-        private void LoadFilesFromFlashDrive()
-        {
-            if (!string.IsNullOrEmpty(flashDrivePath) && Directory.Exists(flashDrivePath))
+            catch (Exception e)
             {
-                listView1.Items.Clear();
-
-                string[] files = Directory.GetFiles(flashDrivePath);
-                foreach (string file in files)
-                {
-                    string fileName = Path.GetFileName(file);
-                    listView1.Items.Add(fileName);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Flash drive not detected.");
+                MessageBox.Show($"An error occurred: {e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                snaprint_landing error = new snaprint_landing();
+                error.Show();
+                this.Hide();
             }
         }
-
-        
-
-        private void Backbutton_Click_1(object sender, EventArgs e)
+        public void loadButtonAction()
         {
-            browse balik = new browse();
-            balik.Show();
+            removeBackSlash();
+            filePath = Filepathtextbox.Text;
+            loadFilesAndDirectories();
+            isFile = false;
+
+        }
+
+
+        private void Gobutton_Click(object sender, EventArgs e)
+{
+    if (listView1.SelectedItems.Count > 0)
+    {
+        // Get the name of the selected item
+        string selectedFileName = listView1.SelectedItems[0].Text;
+
+        // Display a confirmation message box
+        DialogResult result = MessageBox.Show($"Are you sure you want to open '{selectedFileName}'?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+        // Check if the user clicked Yes
+        if (result == DialogResult.Yes)
+        {
+            // Proceed with loading the selected file
+            // Pass the selected file name to the constructor of the preferences form
+            preferences show = new preferences(selectedFileName);
+
+            // Show the preferences form
+            show.Show();
+            
+            // Hide the current form
             this.Hide();
         }
     }
+    else
+    {
+        // If no item is selected, display an error message
+        MessageBox.Show("Please select a file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
 }
 
+
+        public void removeBackSlash()
+        {
+            string path = Filepathtextbox.Text;
+            if (path.LastIndexOf("/") == path.Length - 1)
+            {
+
+                Filepathtextbox.Text = path.Substring(0, path.Length - 1);
+            }
+        }
+
+        public void goBack()
+        {
+            try
+            {
+                removeBackSlash();
+                string path = Filepathtextbox.Text;
+                path = path.Substring(0, path.LastIndexOf("/"));
+                this.isFile = false;
+                Filepathtextbox.Text = path;
+                removeBackSlash();
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
+
+
+
+        private void listView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            currentlySelectedItemName = e.Item.Text;
+            FileAttributes fileAttr = File.GetAttributes(filePath + "/" + currentlySelectedItemName);
+            if ((fileAttr & FileAttributes.Directory) == FileAttributes.Directory)
+            {
+                isFile = false;
+                Filepathtextbox.Text = filePath + "/" + currentlySelectedItemName;
+            }
+            else
+            {
+                isFile = true;
+            }
+        }
+
+        private void Backbutton_Click_1(object sender, EventArgs e)
+        {
+            // Perform default back action
+            goBack();
+            loadButtonAction();
+
+        }
+
+        private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            loadButtonAction();
+
+        }
+
+        private void buttonhome_Click(object sender, EventArgs e)
+        {
+            browse balik = new browse();
+            balik.Show();
+            this.Close();
+        }
+
+      
+    }
+}
