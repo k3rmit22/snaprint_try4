@@ -29,30 +29,21 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(browse));
-            this.label_snapprint = new System.Windows.Forms.Label();
             this.label_browse = new System.Windows.Forms.Label();
             this.labeleject = new System.Windows.Forms.Label();
             this.ejectbutton = new System.Windows.Forms.Button();
             this.browse_button = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label_snapprint
-            // 
-            this.label_snapprint.AutoSize = true;
-            this.label_snapprint.Font = new System.Drawing.Font("Bookman Old Style", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_snapprint.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label_snapprint.Location = new System.Drawing.Point(44, 54);
-            this.label_snapprint.Name = "label_snapprint";
-            this.label_snapprint.Size = new System.Drawing.Size(549, 35);
-            this.label_snapprint.TabIndex = 0;
-            this.label_snapprint.Text = "Snapprint: Public printing machine";
             // 
             // label_browse
             // 
             this.label_browse.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label_browse.AutoSize = true;
+            this.label_browse.BackColor = System.Drawing.Color.Transparent;
             this.label_browse.Font = new System.Drawing.Font("Bookman Old Style", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_browse.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label_browse.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label_browse.Location = new System.Drawing.Point(633, 477);
             this.label_browse.Name = "label_browse";
             this.label_browse.Size = new System.Drawing.Size(317, 32);
@@ -64,8 +55,9 @@
             // 
             this.labeleject.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labeleject.AutoSize = true;
+            this.labeleject.BackColor = System.Drawing.Color.Transparent;
             this.labeleject.Font = new System.Drawing.Font("Bookman Old Style", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labeleject.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labeleject.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.labeleject.Location = new System.Drawing.Point(106, 477);
             this.labeleject.Name = "labeleject";
             this.labeleject.Size = new System.Drawing.Size(242, 32);
@@ -76,7 +68,7 @@
             // ejectbutton
             // 
             this.ejectbutton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ejectbutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(124)))), ((int)(((byte)(108)))));
+            this.ejectbutton.BackColor = System.Drawing.Color.Transparent;
             this.ejectbutton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ejectbutton.BackgroundImage")));
             this.ejectbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ejectbutton.FlatAppearance.BorderSize = 0;
@@ -91,7 +83,7 @@
             // browse_button
             // 
             this.browse_button.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.browse_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(124)))), ((int)(((byte)(108)))));
+            this.browse_button.BackColor = System.Drawing.Color.Transparent;
             this.browse_button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("browse_button.BackgroundImage")));
             this.browse_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.browse_button.FlatAppearance.BorderSize = 0;
@@ -103,33 +95,46 @@
             this.browse_button.UseVisualStyleBackColor = false;
             this.browse_button.Click += new System.EventHandler(this.browse_button_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(-1, -1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(572, 175);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
             // browse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(124)))), ((int)(((byte)(108)))));
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1100, 700);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.browse_button);
             this.Controls.Add(this.ejectbutton);
             this.Controls.Add(this.labeleject);
             this.Controls.Add(this.label_browse);
-            this.Controls.Add(this.label_snapprint);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "browse";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "browse";
             this.Load += new System.EventHandler(this.browse_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label_snapprint;
         private System.Windows.Forms.Label label_browse;
         private System.Windows.Forms.Label labeleject;
         private System.Windows.Forms.Button ejectbutton;
         private System.Windows.Forms.Button browse_button;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -130,13 +130,10 @@ namespace snaprint_try4
             timer1.Interval = 1000; // Change this value as needed for desired blinking speed
         }
 
-        private void PUBLIC_Click(object sender, EventArgs e)
-        {
-        }
+        
 
 
         public static int parentX, parentY;
-
 
 
         private void modal_Click(object sender, EventArgs e)
@@ -162,6 +159,16 @@ namespace snaprint_try4
             }
         }
 
-   
+        protected override CreateParams CreateParams
+        {
+            get 
+            {
+                CreateParams handleParams = base.CreateParams;
+                handleParams.ExStyle = 0x02000000;
+                return handleParams;
+            }
+        }
+
+
     }
 }

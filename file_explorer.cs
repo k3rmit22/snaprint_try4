@@ -201,6 +201,7 @@ namespace snaprint_try4
             }
         }
 
+
         private void Backbutton_Click_1(object sender, EventArgs e)
         {
             // Perform default back action
@@ -222,6 +223,16 @@ namespace snaprint_try4
             this.Close();
         }
 
-      
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams handleParams = base.CreateParams;
+                handleParams.ExStyle = 0x02000000;
+                return handleParams;
+            }
+        }
+
+       
     }
 }

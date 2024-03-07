@@ -108,6 +108,7 @@
     <Compile Include="file_explorer.Designer.cs">
       <DependentUpon>file_explorer.cs</DependentUpon>
     </Compile>
+    <Compile Include="FlashDriveEjector.cs" />
     <Compile Include="loading.cs">
       <SubType>Form</SubType>
     </Compile>
