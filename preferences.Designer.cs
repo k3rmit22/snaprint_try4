@@ -40,25 +40,22 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.filename = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.selectpapersize.SuspendLayout();
             this.colorofpaper.SuspendLayout();
             this.groupcopies.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // selectpapersize
             // 
             this.selectpapersize.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.selectpapersize.BackColor = System.Drawing.Color.Transparent;
-            this.selectpapersize.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("selectpapersize.BackgroundImage")));
             this.selectpapersize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.selectpapersize.Controls.Add(this.labelpapersize);
             this.selectpapersize.Controls.Add(this.combosize);
@@ -95,7 +92,6 @@
             // 
             this.colorofpaper.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.colorofpaper.BackColor = System.Drawing.Color.Transparent;
-            this.colorofpaper.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("colorofpaper.BackgroundImage")));
             this.colorofpaper.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.colorofpaper.Controls.Add(this.combocolor);
             this.colorofpaper.Controls.Add(this.labelcolor);
@@ -130,7 +126,6 @@
             // 
             this.groupcopies.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupcopies.BackColor = System.Drawing.Color.Transparent;
-            this.groupcopies.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupcopies.BackgroundImage")));
             this.groupcopies.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupcopies.Controls.Add(this.combocopies);
             this.groupcopies.Controls.Add(this.label3);
@@ -192,31 +187,18 @@
             this.pictureBox4.TabStop = false;
             this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
-            // groupBox3
+            // filename
             // 
-            this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBox3.BackgroundImage")));
-            this.groupBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.groupBox3.Controls.Add(this.filename);
-            this.groupBox3.Controls.Add(this.pictureBox1);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(225, 130);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(250, 370);
-            this.groupBox3.TabIndex = 5;
-            this.groupBox3.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(28, 115);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(235, 231);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.filename.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.filename.AutoSize = true;
+            this.filename.BackColor = System.Drawing.Color.Transparent;
+            this.filename.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filename.ForeColor = System.Drawing.Color.DarkRed;
+            this.filename.Location = new System.Drawing.Point(197, 456);
+            this.filename.Name = "filename";
+            this.filename.Size = new System.Drawing.Size(21, 20);
+            this.filename.TabIndex = 3;
+            this.filename.Text = "--";
             // 
             // pictureBox2
             // 
@@ -230,17 +212,17 @@
             this.pictureBox2.TabIndex = 9;
             this.pictureBox2.TabStop = false;
             // 
-            // filename
+            // pictureBox1
             // 
-            this.filename.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.filename.AutoSize = true;
-            this.filename.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.filename.ForeColor = System.Drawing.Color.DarkRed;
-            this.filename.Location = new System.Drawing.Point(51, 58);
-            this.filename.Name = "filename";
-            this.filename.Size = new System.Drawing.Size(21, 20);
-            this.filename.TabIndex = 3;
-            this.filename.Text = "--";
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(225, 207);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(235, 231);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
             // 
             // preferences
             // 
@@ -249,8 +231,9 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(124)))), ((int)(((byte)(108)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1068, 622);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.filename);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.groupcopies);
@@ -268,11 +251,10 @@
             this.groupcopies.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -282,8 +264,6 @@
         private System.Windows.Forms.GroupBox groupcopies;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label labelpapersize;
         private System.Windows.Forms.ComboBox combosize;
         private System.Windows.Forms.Label labelcolor;
@@ -292,5 +272,6 @@
         private System.Windows.Forms.ComboBox combocopies;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label filename;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

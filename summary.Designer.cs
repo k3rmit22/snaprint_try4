@@ -43,21 +43,18 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.filename = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBox1.BackgroundImage")));
+            this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.labelColor);
@@ -78,7 +75,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkRed;
-            this.label2.Location = new System.Drawing.Point(42, 71);
+            this.label2.Location = new System.Drawing.Point(42, 27);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(147, 32);
             this.label2.TabIndex = 7;
@@ -89,7 +86,7 @@
             this.labelColor.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelColor.AutoSize = true;
             this.labelColor.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelColor.Location = new System.Drawing.Point(106, 203);
+            this.labelColor.Location = new System.Drawing.Point(74, 157);
             this.labelColor.Name = "labelColor";
             this.labelColor.Size = new System.Drawing.Size(17, 16);
             this.labelColor.TabIndex = 6;
@@ -100,7 +97,7 @@
             this.labelCopies.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelCopies.AutoSize = true;
             this.labelCopies.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCopies.Location = new System.Drawing.Point(111, 167);
+            this.labelCopies.Location = new System.Drawing.Point(84, 111);
             this.labelCopies.Name = "labelCopies";
             this.labelCopies.Size = new System.Drawing.Size(17, 16);
             this.labelCopies.TabIndex = 5;
@@ -111,7 +108,7 @@
             this.labelPaperSize.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelPaperSize.AutoSize = true;
             this.labelPaperSize.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPaperSize.Location = new System.Drawing.Point(129, 128);
+            this.labelPaperSize.Location = new System.Drawing.Point(106, 68);
             this.labelPaperSize.Name = "labelPaperSize";
             this.labelPaperSize.Size = new System.Drawing.Size(17, 16);
             this.labelPaperSize.TabIndex = 4;
@@ -123,7 +120,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.DarkRed;
-            this.label4.Location = new System.Drawing.Point(54, 203);
+            this.label4.Location = new System.Drawing.Point(22, 157);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 16);
             this.label4.TabIndex = 3;
@@ -135,7 +132,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DarkRed;
-            this.label3.Location = new System.Drawing.Point(49, 167);
+            this.label3.Location = new System.Drawing.Point(22, 111);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 16);
             this.label3.TabIndex = 2;
@@ -147,7 +144,7 @@
             this.labelpaper23.AutoSize = true;
             this.labelpaper23.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelpaper23.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelpaper23.Location = new System.Drawing.Point(45, 128);
+            this.labelpaper23.Location = new System.Drawing.Point(22, 68);
             this.labelpaper23.Name = "labelpaper23";
             this.labelpaper23.Size = new System.Drawing.Size(78, 16);
             this.labelpaper23.TabIndex = 1;
@@ -156,8 +153,7 @@
             // groupBox2
             // 
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBox2.BackgroundImage")));
+            this.groupBox2.BackColor = System.Drawing.Color.White;
             this.groupBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupBox2.Controls.Add(this.labelPrice);
             this.groupBox2.Font = new System.Drawing.Font("Bookman Old Style", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -181,8 +177,7 @@
             // groupBox4
             // 
             this.groupBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupBox4.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBox4.BackgroundImage")));
+            this.groupBox4.BackColor = System.Drawing.Color.White;
             this.groupBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupBox4.Font = new System.Drawing.Font("Bookman Old Style", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -235,28 +230,14 @@
             this.pictureBox2.TabIndex = 14;
             this.pictureBox2.TabStop = false;
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBox3.BackgroundImage")));
-            this.groupBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.groupBox3.Controls.Add(this.filename);
-            this.groupBox3.Controls.Add(this.pictureBox1);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(137, 129);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(250, 370);
-            this.groupBox3.TabIndex = 15;
-            this.groupBox3.TabStop = false;
-            // 
             // filename
             // 
             this.filename.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.filename.AutoSize = true;
+            this.filename.BackColor = System.Drawing.Color.Transparent;
             this.filename.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.filename.ForeColor = System.Drawing.Color.DarkRed;
-            this.filename.Location = new System.Drawing.Point(51, 58);
+            this.filename.Location = new System.Drawing.Point(120, 442);
             this.filename.Name = "filename";
             this.filename.Size = new System.Drawing.Size(21, 20);
             this.filename.TabIndex = 3;
@@ -265,12 +246,13 @@
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(28, 115);
+            this.pictureBox1.Location = new System.Drawing.Point(124, 194);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(235, 231);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
             // 
             // summary
@@ -280,7 +262,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(124)))), ((int)(((byte)(108)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1068, 622);
-            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.filename);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -296,10 +279,9 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -318,7 +300,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label filename;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
