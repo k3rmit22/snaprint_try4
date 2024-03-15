@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+
 
 namespace snaprint_try4
 {
@@ -25,6 +28,9 @@ namespace snaprint_try4
         {
             InitializeComponent();
             InitializeKioskMode();
+            SetDoubleBuffered();
+
+
 
             // Assign values to fields
             this.selectedCopies = copies;
@@ -42,6 +48,7 @@ namespace snaprint_try4
 
             //display price
             CalculateAndDisplayPrice();
+            
         }
         //kiosk mode
         private void InitializeKioskMode()
@@ -65,6 +72,13 @@ namespace snaprint_try4
             next.Show();
             this.Hide();
         }
+
+        private void SetDoubleBuffered()
+        {
+            // Enable double buffering for this form
+            this.DoubleBuffered = true;
+        }
+
 
         private void CalculateAndDisplayPrice()
         {
@@ -98,9 +112,62 @@ namespace snaprint_try4
 
         private void button2_Click(object sender, EventArgs e)
         {
-            loading next = new loading();
-            next.Show();
-            this.Hide();
+            try
+            {
+                // Check if a file is selected
+                if (!string.IsNullOrEmpty(selectedFileName))
+                {
+                    // Log the selected file path
+                    Console.WriteLine($"Selected file path: {selectedFileName}");
+
+                    // Validate file existence
+                    if (File.Exists(selectedFileName))
+                    {
+                        // Print the selected PDF file
+                        PrintPDF(selectedFileName);
+                    }
+                    else
+                    {
+                        MessageBox.Show("The selected file does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a PDF file to print.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                // Display the loading form
+                loading next = new loading();
+                next.Show();
+                this.Hide();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void PrintPDF(string filePath)
+        {
+            // Check if the file exists
+            if (File.Exists(filePath))
+            {
+                // Create a PrintDocument object
+                PrintDocument pd = new PrintDocument();
+                pd.PrintPage += (sender, e) =>
+                {
+                    // Load the PDF file and draw it on the PrintPage event
+                    e.Graphics.DrawImage(Image.FromFile(filePath), e.PageBounds);
+                };
+
+                // Start printing
+                pd.Print();
+            }
+            else
+            {
+                MessageBox.Show("File not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -115,7 +182,7 @@ namespace snaprint_try4
             get
             {
                 CreateParams handleParams = base.CreateParams;
-                handleParams.ExStyle = 0x02000000;
+                handleParams.ExStyle |= 0x02000000;
                 return handleParams;
             }
         }

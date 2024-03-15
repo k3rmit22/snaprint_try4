@@ -22,7 +22,16 @@ namespace snaprint_try4
             InitializeComponent();
             InitializeKioskMode();
             InitializeUSBWatcher();
+            SetDoubleBuffered();
+
         }
+
+        private void SetDoubleBuffered()
+        {
+            // Enable double buffering for this form
+            this.DoubleBuffered = true;
+        }
+
         private void InitializeKioskMode()
         {
             // Set the form to cover the entire screen

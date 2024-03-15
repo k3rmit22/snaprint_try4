@@ -23,6 +23,7 @@ namespace snaprint_try4
         {
             InitializeComponent();
             InitializeKioskMode();
+            SetDoubleBuffered();
 
             // Set the selected file name
             this.selectedFileName = selectedFileName;
@@ -30,6 +31,10 @@ namespace snaprint_try4
             // Display the selected file name in the filename TextBox
             filename.Text = selectedFileName;
         }
+        private void SetDoubleBuffered()
+        {
+            this.DoubleBuffered = true;
+        } 
 
         private void InitializeKioskMode()
         {
@@ -84,7 +89,7 @@ namespace snaprint_try4
             get
             {
                 CreateParams handleParams = base.CreateParams;
-                handleParams.ExStyle = 0x02000000;
+                handleParams.ExStyle|= 0x02000000;
                 return handleParams;
             }
         }

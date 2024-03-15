@@ -24,7 +24,13 @@ namespace snaprint_try4
             InitializeComponent();
             //InitializeRemovalWatcher();
             InitializeKioskMode();
+            SetDoubleBufferred();
 
+        }
+
+        private void SetDoubleBufferred()
+        {
+            this.DoubleBuffered = true;
         }
         private void InitializeKioskMode()
         {
@@ -117,7 +123,7 @@ namespace snaprint_try4
             get
             {
                 CreateParams handleParams = base.CreateParams;
-                handleParams.ExStyle = 0x02000000;
+                handleParams.ExStyle |= 0x02000000;
                 return handleParams;
             }
         }

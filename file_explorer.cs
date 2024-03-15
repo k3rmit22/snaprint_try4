@@ -19,12 +19,20 @@ namespace snaprint_try4
         private string filePath = "D:";
         private bool isFile = false;
         private string currentlySelectedItemName = "";
-       
+        private string selectedFilePath = "";
+
 
         public file_explorer()
         {
             InitializeComponent();
             InitializeKioskMode();
+            SetDoubleBuffered();
+        }
+
+        private void SetDoubleBuffered()
+        {
+            // Enable double buffering for this form
+            this.DoubleBuffered = true;
         }
 
         private void InitializeKioskMode()
@@ -185,7 +193,7 @@ namespace snaprint_try4
         }
 
 
-
+        /*
         private void listView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             currentlySelectedItemName = e.Item.Text;
@@ -198,6 +206,24 @@ namespace snaprint_try4
             else
             {
                 isFile = true;
+            }
+        } */
+        private void listView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            currentlySelectedItemName = e.Item.Text;
+            string selectedItemPath = Path.Combine(filePath, currentlySelectedItemName); // Construct the full path of the selected item
+
+            if (File.Exists(selectedItemPath))
+            {
+                isFile = true;
+                selectedFilePath = selectedItemPath; // Update the selected file path
+                Filepathtextbox.Text = selectedFilePath; // Update the file path textbox with the selected file path
+            }
+            else
+            {
+                isFile = false;
+                selectedFilePath = ""; // Clear the selected file path
+                Filepathtextbox.Text = ""; // Clear the file path textbox
             }
         }
 
@@ -228,7 +254,7 @@ namespace snaprint_try4
             get
             {
                 CreateParams handleParams = base.CreateParams;
-                handleParams.ExStyle = 0x02000000;
+                handleParams.ExStyle |= 0x02000000;
                 return handleParams;
             }
         }
