@@ -25,7 +25,8 @@ namespace snaprint_try4
         {
             InitializeComponent();
             InitializeKioskMode();
-           
+            SetDoubleBufferred();
+
 
 
             this.selectedCopies = copies;
@@ -43,6 +44,10 @@ namespace snaprint_try4
             // Store the PDF file data
             this.pdfData = pdfData;
             // PrintPdf(); ibalik mamaya 
+        }
+        private void SetDoubleBufferred()
+        {
+            this.DoubleBuffered = true;
         }
 
         /*private void PrintPdf()
@@ -160,14 +165,17 @@ namespace snaprint_try4
                     {
                         using (PrintDocument printDocument = pdfDocument.CreatePrintDocument())
                         {
-                            using (PrintDialog printDialog = new PrintDialog())
-                            {
-                                printDialog.Document = printDocument;
-                                if (printDialog.ShowDialog() == DialogResult.OK)
-                                {
-                                    printDocument.Print();
-                                }
-                            }
+                            
+                               
+                            printDocument.Print();
+                           
+                            loading next = new loading();
+                            next.Show();
+
+                           
+                            this.Close();
+
+
                         }
                     }
                 }
@@ -197,7 +205,7 @@ namespace snaprint_try4
             }
         }
 
-        // Other methods and event handlers...
+      
     
 
     private void button1_Click(object sender, EventArgs e)
@@ -207,15 +215,7 @@ namespace snaprint_try4
             this.Hide();
         }
 
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams handleParams = base.CreateParams;
-                handleParams.ExStyle |= 0x02000000;
-                return handleParams;
-            }
-        }
+      
         private bool ValidatePdfData(byte[] pdfData)
         {
             // Check for null or empty data
@@ -249,6 +249,16 @@ namespace snaprint_try4
                 return true;
             }
             return false;
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams handleParams = base.CreateParams;
+                handleParams.ExStyle |= 0x02000000;
+                return handleParams;
+            }
         }
 
 

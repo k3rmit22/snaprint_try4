@@ -42,15 +42,11 @@ namespace snaprint_try4
 
         private void label1_Click(object sender, EventArgs e)
         {
-            snaprint_landing next = new snaprint_landing();
+            browse next = new browse();
             next.Show();
             this.Hide();
 
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

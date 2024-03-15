@@ -209,21 +209,7 @@ namespace snaprint_try4
         }
 
 
-        /*
-        private void listView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
-        {
-            currentlySelectedItemName = e.Item.Text;
-            FileAttributes fileAttr = File.GetAttributes(filePath + "/" + currentlySelectedItemName);
-            if ((fileAttr & FileAttributes.Directory) == FileAttributes.Directory)
-            {
-                isFile = false;
-                Filepathtextbox.Text = filePath + "/" + currentlySelectedItemName;
-            }
-            else
-            {
-                isFile = true;
-            }
-        } */
+       
         private void listView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             currentlySelectedItemName = e.Item.Text;

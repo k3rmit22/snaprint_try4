@@ -167,14 +167,13 @@ namespace snaprint_try4
                 modalBackgound.Dispose();
             }
         }
-
         protected override CreateParams CreateParams
         {
-            get 
+            get
             {
-                CreateParams handleParams = base.CreateParams;
-                handleParams.ExStyle = 0x02000000;
-                return handleParams;
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle = cp.ExStyle | 0x2000000;
+                return cp;
             }
         }
 

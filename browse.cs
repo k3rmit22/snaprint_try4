@@ -64,31 +64,6 @@ namespace snaprint_try4
 
         }
 
-        /* private void ejectbutton_Click(object sender, EventArgs e)
-         {
-
-             var drives = DriveInfo.GetDrives().Where(d => d.IsReady & d.DriveType == DriveType.Removable);
-             if (drives.FirstOrDefault() != null)
-             {
-                 char driveLetter = Convert.ToChar(drives.FirstOrDefault().Name.Replace(":\\", ""));
-                 if (EjectPendriveManager.EjectPenDrive(driveLetter))
-                 {
-                     // Ejection was successful, open another form here
-                     snaprint_landing form = new snaprint_landing();
-                     form.Show();
-                     this.Hide(); // Hide the current form if needed
-                 }
-                 else
-                 {
-                     MessageBox.Show("Failed to eject the flash drive", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                 }
-             }
-             else
-             {
-                 MessageBox.Show("No Pendrive Connected...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-             }
-
-         }*/
         private void ejectbutton_Click(object sender, EventArgs e)
         {
             var drives = DriveInfo.GetDrives().Where(d => d.IsReady && d.DriveType == DriveType.Removable);
@@ -122,11 +97,12 @@ namespace snaprint_try4
         {
             get
             {
-                CreateParams handleParams = base.CreateParams;
-                handleParams.ExStyle |= 0x02000000;
-                return handleParams;
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle = cp.ExStyle | 0x2000000;
+                return cp;
             }
         }
+
 
 
 
