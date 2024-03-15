@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.IO;
 
 
+
 namespace snaprint_try4
 {
     public partial class file_explorer : Form
@@ -134,35 +135,50 @@ namespace snaprint_try4
 
 
         private void Gobutton_Click(object sender, EventArgs e)
-{
-    if (listView1.SelectedItems.Count > 0)
-    {
-        // Get the name of the selected item
-        string selectedFileName = listView1.SelectedItems[0].Text;
-
-        // Display a confirmation message box
-        DialogResult result = MessageBox.Show($"Are you sure you want to open '{selectedFileName}'?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-        // Check if the user clicked Yes
-        if (result == DialogResult.Yes)
         {
-            // Proceed with loading the selected file
-            // Pass the selected file name to the constructor of the preferences form
-            preferences show = new preferences(selectedFileName);
+            try
+            {
+                if (listView1.SelectedItems.Count > 0)
+                {
+                    // Get the name of the selected PDF file
+                    string selectedFileName = listView1.SelectedItems[0].Text;
 
-            // Show the preferences form
-            show.Show();
-            
-            // Hide the current form
-            this.Hide();
+                    // Get the full path of the selected PDF file
+                    string selectedFilePath = Path.Combine(filePath, selectedFileName);
+
+                    // Read the selected PDF file as a byte array
+                    byte[] pdfData = File.ReadAllBytes(selectedFilePath);
+
+                    // Display a confirmation message box
+                    DialogResult result = MessageBox.Show($"Are you sure you want to open '{selectedFileName}'?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    // Check if the user clicked Yes
+                    if (result == DialogResult.Yes)
+                    {
+                        // Create an instance of the preferences form and pass the selected PDF file data
+                        preferences show = new preferences(selectedFileName, selectedFilePath, pdfData);
+
+                        // Show the preferences form
+                        show.Show();
+
+                        // Hide the current form
+                        this.Hide();
+                    }
+                }
+                else
+                {
+                    // If no item is selected, display an error message
+                    MessageBox.Show("Please select a PDF file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-    }
-    else
-    {
-        // If no item is selected, display an error message
-        MessageBox.Show("Please select a file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-    }
-}
+
+
+
 
 
         public void removeBackSlash()

@@ -98,19 +98,16 @@
             this.colorofpaper.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colorofpaper.Location = new System.Drawing.Point(515, 402);
             this.colorofpaper.Name = "colorofpaper";
-            this.colorofpaper.Size = new System.Drawing.Size(272, 92);
+            this.colorofpaper.Size = new System.Drawing.Size(365, 92);
             this.colorofpaper.TabIndex = 5;
             this.colorofpaper.TabStop = false;
             // 
             // combocolor
             // 
             this.combocolor.FormattingEnabled = true;
-            this.combocolor.Items.AddRange(new object[] {
-            "Colored",
-            "Greyscale"});
             this.combocolor.Location = new System.Drawing.Point(127, 41);
             this.combocolor.Name = "combocolor";
-            this.combocolor.Size = new System.Drawing.Size(121, 33);
+            this.combocolor.Size = new System.Drawing.Size(207, 33);
             this.combocolor.TabIndex = 1;
             // 
             // labelcolor
@@ -243,6 +240,7 @@
             this.Name = "preferences";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "preferences";
+            this.Load += new System.EventHandler(this.preferences_Load);
             this.selectpapersize.ResumeLayout(false);
             this.selectpapersize.PerformLayout();
             this.colorofpaper.ResumeLayout(false);

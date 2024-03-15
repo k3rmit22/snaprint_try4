@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Drawing.Printing;
+using System.Drawing;
+using PdfiumViewer;
+
+
+
 
 
 namespace snaprint_try4
@@ -17,39 +16,63 @@ namespace snaprint_try4
     {
         private string selectedFileName; //display file
 
-        //get preferences
         private string selectedCopies;
         private string selectedColor;
         private string selectedPaperSize;
+        private byte[] pdfData; // Store the PDF file data here
 
-        private Dictionary<string, decimal> prices;
-
-        public summary(string selectedFileName, string copies, string color, string paperSize)
+        public summary(string selectedFileName, string copies, string color, string paperSize, byte[] pdfData)
         {
             InitializeComponent();
             InitializeKioskMode();
-            SetDoubleBuffered();
+           
 
 
-
-            // Assign values to fields
             this.selectedCopies = copies;
             this.selectedColor = color;
             this.selectedPaperSize = paperSize;
             this.selectedFileName = selectedFileName; // Assign parameter value to the field
 
             // Display selected items in labels
+
             labelCopies.Text = copies;
             labelColor.Text = color;
             labelPaperSize.Text = paperSize;
-
-            // Display the selected file name in the TextBox
             filename.Text = selectedFileName;
 
-            //display price
-            CalculateAndDisplayPrice();
-            
+            // Store the PDF file data
+            this.pdfData = pdfData;
+            // PrintPdf(); ibalik mamaya 
         }
+
+        /*private void PrintPdf()
+        {
+            try
+            {
+                using (MemoryStream stream = new MemoryStream(pdfData))
+                {
+                    using (PrintDocument printDoc = new PrintDocument())
+                    {
+                        printDoc.PrintPage += (sender, e) =>
+                        {
+                            using (StreamReader reader = new StreamReader(stream))
+                            {
+                                string text = reader.ReadToEnd();
+                                e.Graphics.DrawString(text, SystemFonts.DefaultFont, System.Drawing.Brushes.Black, e.MarginBounds);
+                            }
+                        };
+
+                        printDoc.Print();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while printing the PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        } */
+
+
         //kiosk mode
         private void InitializeKioskMode()
         {
@@ -66,113 +89,120 @@ namespace snaprint_try4
             };
         }
         //next button
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-            loading next = new loading();
-            next.Show();
-            this.Hide();
-        }
-
-        private void SetDoubleBuffered()
-        {
-            // Enable double buffering for this form
-            this.DoubleBuffered = true;
-        }
 
 
-        private void CalculateAndDisplayPrice()
-        {
-            // Initialize hardcoded prices
-            Dictionary<string, decimal> prices = new Dictionary<string, decimal>();
-            prices.Add("Colored", 10m); // 10 pesos per page for colored ink
-            prices.Add("Greyscale", 5m); // 5 pesos per page for greyscale ink
-            prices.Add("2 Copies (Colored/Greyscale)", 20m); // 20 pesos per page for 2 copies
-            prices.Add("3 Copies (Colored/Greyscale)", 30m); // 30 pesos per page for 3 copies
-            prices.Add("4 Copies (Colored/Greyscale)", 40m); // 40 pesos per page for 4 copies
-            prices.Add("5 Copies (Colored/Greyscale)", 50m); // 50 pesos per page for 5 copies
 
-            // Calculate total price based on selected items
-            decimal totalPrice = 0;
 
-            // Add price for ink color
-            if (selectedColor == "Colored" || selectedColor == "Greyscale")
-            {
-                totalPrice += prices.ContainsKey(selectedColor) ? prices[selectedColor] : 0;
-            }
+        // Button click event to print PDF
 
-            // Add price for selected copies
-            if (selectedCopies == "2 Copies (Colored/Greyscale)" || selectedCopies == "3 Copies (Colored/Greyscale)" || selectedCopies == "4 Copies (Colored/Greyscale)" || selectedCopies == "5 Copies (Colored/Greyscale)")
-            {
-                totalPrice += prices.ContainsKey(selectedCopies) ? prices[selectedCopies] : 0;
-            }
+        /* private void button2_Click(object sender, EventArgs e)
+ {
+     try
+     {
+         // Check if pdfData is null or empty
+         if (pdfData == null || pdfData.Length == 0)
+         {
+             MessageBox.Show("No PDF file data available.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+             return;
+         }
 
-            // Display total price in label
-            labelPrice.Text = totalPrice.ToString("N0") + " pesos"; // "N0" format for whole number
-        }
+         // Create a memory stream from the byte array
+         using (MemoryStream stream = new MemoryStream(pdfData))
+         {
+             // Load the PDF document from the memory stream
+             using (var image = Image.FromStream(stream))
+             {
+                 // Create a PrintDocument object
+                 PrintDocument pd = new PrintDocument();
+
+                 // Add PrintPage event handler
+                 pd.PrintPage += (s, pe) =>
+                 {
+                     // Draw the image on the print page
+                     pe.Graphics.DrawImage(image, pe.MarginBounds);
+                 };
+
+                 // Set printer settings
+                 PrintDialog printDialog = new PrintDialog();
+                 pd.PrinterSettings = printDialog.PrinterSettings;
+
+                 // Print the document
+                 pd.Print();
+             }
+         }
+
+         // Proceed to the loading form
+         loading next = new loading();
+         next.Show();
+         this.Hide();
+     }
+     catch (Exception ex)
+     {
+         MessageBox.Show($"An error occurred while printing the PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+     }
+ }*/
+
+
 
         private void button2_Click(object sender, EventArgs e)
         {
             try
             {
-                // Check if a file is selected
-                if (!string.IsNullOrEmpty(selectedFileName))
+                if (!ValidatePdfData(pdfData))
                 {
-                    // Log the selected file path
-                    Console.WriteLine($"Selected file path: {selectedFileName}");
-
-                    // Validate file existence
-                    if (File.Exists(selectedFileName))
-                    {
-                        // Print the selected PDF file
-                        PrintPDF(selectedFileName);
-                    }
-                    else
-                    {
-                        MessageBox.Show("The selected file does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Please select a PDF file to print.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Validation failed, return without printing
+                    return;
                 }
 
-                // Display the loading form
-                loading next = new loading();
-                next.Show();
-                this.Hide();
+                using (MemoryStream memoryStream = new MemoryStream(pdfData))
+                {
+                    using (PdfDocument pdfDocument = PdfDocument.Load(memoryStream))
+                    {
+                        using (PrintDocument printDocument = pdfDocument.CreatePrintDocument())
+                        {
+                            using (PrintDialog printDialog = new PrintDialog())
+                            {
+                                printDialog.Document = printDocument;
+                                if (printDialog.ShowDialog() == DialogResult.OK)
+                                {
+                                    printDocument.Print();
+                                }
+                            }
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An error occurred while printing the PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-
-        private void PrintPDF(string filePath)
+        private void Pd_PrintPage(object sender, PrintPageEventArgs e)
         {
-            // Check if the file exists
-            if (File.Exists(filePath))
+            try
             {
-                // Create a PrintDocument object
-                PrintDocument pd = new PrintDocument();
-                pd.PrintPage += (sender, e) =>
+                using (MemoryStream stream = new MemoryStream(pdfData))
                 {
-                    // Load the PDF file and draw it on the PrintPage event
-                    e.Graphics.DrawImage(Image.FromFile(filePath), e.PageBounds);
-                };
-
-                // Start printing
-                pd.Print();
+                    using (var image = Image.FromStream(stream))
+                    {
+                        // Draw the image on the print page
+                        e.Graphics.DrawImage(image, e.MarginBounds);
+                    }
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("File not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An error occurred while printing the PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        // Other methods and event handlers...
+    
+
+    private void button1_Click(object sender, EventArgs e)
         {
-            preferences back = new preferences(selectedFileName);
+            preferences back = new preferences(selectedFileName,pdfData);
             back.Show();
             this.Hide();
         }
@@ -186,8 +216,42 @@ namespace snaprint_try4
                 return handleParams;
             }
         }
+        private bool ValidatePdfData(byte[] pdfData)
+        {
+            // Check for null or empty data
+            if (pdfData == null || pdfData.Length == 0)
+            {
+                MessageBox.Show("PDF data is empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
 
-       
+            // Check for PDF file signature ("%PDF-")
+            if (!IsPdfFile(pdfData))
+            {
+                MessageBox.Show("Invalid PDF file format.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            MessageBox.Show("PDF data is valid.", "Validation Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return true;
+        }
+
+        private bool IsPdfFile(byte[] data)
+        {
+            // Check if the first few bytes match the PDF file signature ("%PDF-")
+            if (data.Length >= 5 &&
+                data[0] == 0x25 &&  // '%'
+                data[1] == 0x50 &&  // 'P'
+                data[2] == 0x44 &&  // 'D'
+                data[3] == 0x46 &&  // 'F'
+                data[4] == 0x2D)    // '-'
+            {
+                return true;
+            }
+            return false;
+        }
+
+
     }
 
 }
