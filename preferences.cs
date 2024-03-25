@@ -4,7 +4,8 @@ using System.IO;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using PdfiumViewer;
-
+using System.Drawing.Printing;
+using System.Linq;
 
 
 namespace snaprint_try4
@@ -225,6 +226,27 @@ namespace snaprint_try4
 
 
 
+        /* private void combocolor_SelectedIndexChanged(object sender, EventArgs e)
+         {
+             try
+             {
+                 // Check if an item is selected in the combocolor combo box
+                 if (combocolor.SelectedItem != null)
+                 {
+                     // Cast the selected item to PriceColorItem and capture the price
+                     selectedPrice = ((PriceColorItem)combocolor.SelectedItem)?.Price ?? 0;
+                     if (selectedPrice == 0)
+                     {
+                         MessageBox.Show("Selected item does not have a valid price.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                     }
+                 }
+             }
+             catch (Exception ex)
+             {
+                 MessageBox.Show($"An error occurred while retrieving the selected price: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+             }
+         } */
+
         private void combocolor_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -237,6 +259,24 @@ namespace snaprint_try4
                     if (selectedPrice == 0)
                     {
                         MessageBox.Show("Selected item does not have a valid price.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Get the selected color
+                    string selectedColor = ((PriceColorItem)combocolor.SelectedItem)?.Color;
+
+                    // Set printer settings based on the selected color
+                    if (selectedColor.Equals("Black", StringComparison.OrdinalIgnoreCase))
+                    {
+                        SetPrinterSettingsToGreyscale();
+                    }
+                    else if (selectedColor.Equals("Colored", StringComparison.OrdinalIgnoreCase))
+                    {
+                        SetPrinterSettingsToColored();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid color selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -244,6 +284,36 @@ namespace snaprint_try4
             {
                 MessageBox.Show($"An error occurred while retrieving the selected price: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void SetPrinterSettingsToGreyscale()
+        {
+            // Create a PrintDocument instance
+            PrintDocument printDocument = new PrintDocument();
+
+            // Get the default printer name
+            string defaultPrinterName = printDocument.PrinterSettings.PrinterName;
+
+            // Modify the printer settings to greyscale
+            printDocument.DefaultPageSettings.Color = false; // Set to greyscale
+
+            // Apply the modified printer settings to the default printer
+            printDocument.PrinterSettings.PrinterName = defaultPrinterName;
+        }
+
+        private void SetPrinterSettingsToColored()
+        {
+            // Create a PrintDocument instance
+            PrintDocument printDocument = new PrintDocument();
+
+            // Get the default printer name
+            string defaultPrinterName = printDocument.PrinterSettings.PrinterName;
+
+            // Modify the printer settings to colored
+            printDocument.DefaultPageSettings.Color = true; // Set to colored
+
+            // Apply the modified printer settings to the default printer
+            printDocument.PrinterSettings.PrinterName = defaultPrinterName;
         }
 
 
@@ -284,48 +354,6 @@ namespace snaprint_try4
 
 
 
-        /*private void pictureBox3_Click(object sender, EventArgs e)
-        {
-            // Check if all combo boxes have a selected item
-            if (combosize.SelectedItem != null && combocopies.SelectedItem != null && combocolor.SelectedItem != null && pdfData != null && pdfData.Length > 0)
-            {
-                // Get user selections
-                string paperSize = combosize.SelectedItem.ToString();
-                string copies = combocopies.SelectedItem.ToString();
-                string color = combocolor.SelectedItem.ToString();
-                string selectedFileName = filename.Text; // Assuming filename is the name of the textbox
-                int numberOfPages = GetNumberOfPages(pdfData);
-
-                double pricePerColor = ((PriceColorItem)combocolor.SelectedItem)?.Price ?? 0;
-
-                double totalPrice = ComputeTotalPrice(pricePerColor, copies, pdfData);
-
-
-
-
-                // Print debug messages
-                Console.WriteLine("Selected PDF file received successfully:");
-                Console.WriteLine($"  File Name: {selectedFileName}");
-                Console.WriteLine($"  Paper Size: {paperSize}");
-                Console.WriteLine($"  Copies: {copies}");
-                Console.WriteLine($"  Color: {color}");
-                Console.WriteLine($"  Number of pages in the PDF: {numberOfPages}");
-
-              
-
-
-                // Proceed to the next step or form
-                // Example: navigate to the next form
-                Form nextForm = new summary(selectedFileName, copies, color, paperSize, pdfData, totalPrice); // Pass the pdfData to the summary form
-                nextForm.Show();
-                this.Hide();
-            }
-            else
-            {
-                // Display a message indicating that all selections are required
-                MessageBox.Show("Please select options for all fields and make sure a PDF file is loaded.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }*/
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
@@ -351,6 +379,11 @@ namespace snaprint_try4
                 // Calculate total price
                 double totalPrice = ComputeTotalPrice(pricePerColor, copies, pdfData);
 
+                string printingOption = selectedPriceColorItem.Color.Equals("black", StringComparison.OrdinalIgnoreCase) ? "Black" : "Colored";
+
+                ApplyPrinterSettings(printingOption);
+
+
                 // Print debug messages
                 Console.WriteLine("Selected PDF file received successfully:");
                 Console.WriteLine($"  File Name: {selectedFileName}");
@@ -359,9 +392,10 @@ namespace snaprint_try4
                 Console.WriteLine($"  Color: {selectedPriceColorItem.Color}");
                 Console.WriteLine($"  Number of pages in the PDF: {GetNumberOfPages(pdfData)}");
                 Console.WriteLine($"  Total Price: {totalPrice}");
+                Console.WriteLine($"  Preferred Printing Option: {printingOption}");
 
                 // Proceed to the next step or form
-                Form nextForm = new summary(selectedFileName, copies, selectedPriceColorItem.Color, paperSize, pdfData, totalPrice);
+                Form nextForm = new summary(selectedFileName, copies, selectedPriceColorItem.Color, paperSize, pdfData, totalPrice, printingOption);
                 nextForm.Show();
                 this.Hide();
             }
@@ -369,6 +403,23 @@ namespace snaprint_try4
             {
                 // Display a message indicating that all selections are required
                 MessageBox.Show("Please select options for all fields and make sure a PDF file is loaded.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Method to apply printer settings based on the selected color
+        private void ApplyPrinterSettings(string printingOption)
+        {
+            if (printingOption.Equals("Black", StringComparison.OrdinalIgnoreCase))
+            {
+                SetPrinterSettingsToGreyscale();
+            }
+            else if (printingOption.Equals("Colored", StringComparison.OrdinalIgnoreCase))
+            {
+                SetPrinterSettingsToColored();
+            }
+            else
+            {
+                MessageBox.Show("Invalid color selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

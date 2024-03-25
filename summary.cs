@@ -14,6 +14,7 @@ namespace snaprint_try4
 {
     public partial class summary : Form
     {
+        private string printingOption;
         private string selectedFileName; //display file
 
         private string selectedCopies;
@@ -22,9 +23,10 @@ namespace snaprint_try4
         private byte[] pdfData; // Store the PDF file data here
         private string selectedFilePath;
 
+
         private double totalPrice;
 
-        public summary(string selectedFileName, string copies, string color, string paperSize, byte[] pdfData, double totalPrice)
+        public summary(string selectedFileName, string copies, string color, string paperSize, byte[] pdfData, double totalPrice, string printingOption)
         {
             InitializeComponent();
             InitializeKioskMode();
@@ -37,6 +39,7 @@ namespace snaprint_try4
             this.selectedPaperSize = paperSize;
             this.selectedFileName = selectedFileName; // Assign parameter value to the field
             this.totalPrice = totalPrice;
+            this.printingOption = printingOption;
 
             // Display selected items in labels
 
@@ -94,8 +97,19 @@ namespace snaprint_try4
                     {
                         using (PrintDocument printDocument = pdfDocument.CreatePrintDocument())
                         {
-                            
-                               
+                           
+
+                            // Apply printer settings based on the preferred printing option
+                            if (printingOption.Equals("Black", StringComparison.OrdinalIgnoreCase))
+                            {
+                                SetPrinterSettingsToGreyscale(printDocument);
+                            }
+                            else if (printingOption.Equals("", StringComparison.OrdinalIgnoreCase))
+                            {
+                                SetPrinterSettingsToColored(printDocument);
+                            }
+
+
                             printDocument.Print();
                            
                             loading next = new loading();
@@ -113,6 +127,18 @@ namespace snaprint_try4
             {
                 MessageBox.Show($"An error occurred while printing the PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void SetPrinterSettingsToGreyscale(PrintDocument printDocument)
+        {
+            // Modify the printer settings to greyscale
+            printDocument.DefaultPageSettings.Color = false; // Set to greyscale
+        }
+
+        private void SetPrinterSettingsToColored(PrintDocument printDocument)
+        {
+            // Modify the printer settings to colored
+            printDocument.DefaultPageSettings.Color = true; // Set to colored
         }
 
         private void Pd_PrintPage(object sender, PrintPageEventArgs e)
