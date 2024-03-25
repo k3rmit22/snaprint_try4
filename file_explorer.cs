@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Management;
 using System.Diagnostics;
 using System.IO;
+using System.Security.Cryptography.Xml;
 
 
 
@@ -21,6 +22,8 @@ namespace snaprint_try4
         private bool isFile = false;
         private string currentlySelectedItemName = "";
         private string selectedFilePath = "";
+
+       
 
 
         public file_explorer()
@@ -175,7 +178,11 @@ namespace snaprint_try4
             {
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+        } //working in printing sa not showing the selected file
+
+
+        
+
 
 
 

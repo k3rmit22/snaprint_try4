@@ -20,8 +20,11 @@ namespace snaprint_try4
         private string selectedColor;
         private string selectedPaperSize;
         private byte[] pdfData; // Store the PDF file data here
+        private string selectedFilePath;
 
-        public summary(string selectedFileName, string copies, string color, string paperSize, byte[] pdfData)
+        private double totalPrice;
+
+        public summary(string selectedFileName, string copies, string color, string paperSize, byte[] pdfData, double totalPrice)
         {
             InitializeComponent();
             InitializeKioskMode();
@@ -33,6 +36,7 @@ namespace snaprint_try4
             this.selectedColor = color;
             this.selectedPaperSize = paperSize;
             this.selectedFileName = selectedFileName; // Assign parameter value to the field
+            this.totalPrice = totalPrice;
 
             // Display selected items in labels
 
@@ -40,6 +44,7 @@ namespace snaprint_try4
             labelColor.Text = color;
             labelPaperSize.Text = paperSize;
             filename.Text = selectedFileName;
+            lblTotalPrice.Text = $"Total Price: ₱{totalPrice:N2}";
 
             // Store the PDF file data
             this.pdfData = pdfData;
@@ -50,33 +55,8 @@ namespace snaprint_try4
             this.DoubleBuffered = true;
         }
 
-        /*private void PrintPdf()
-        {
-            try
-            {
-                using (MemoryStream stream = new MemoryStream(pdfData))
-                {
-                    using (PrintDocument printDoc = new PrintDocument())
-                    {
-                        printDoc.PrintPage += (sender, e) =>
-                        {
-                            using (StreamReader reader = new StreamReader(stream))
-                            {
-                                string text = reader.ReadToEnd();
-                                e.Graphics.DrawString(text, SystemFonts.DefaultFont, System.Drawing.Brushes.Black, e.MarginBounds);
-                            }
-                        };
-
-                        printDoc.Print();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred while printing the PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        } */
-
+        
+       
 
         //kiosk mode
         private void InitializeKioskMode()
@@ -93,59 +73,8 @@ namespace snaprint_try4
                     e.Handled = true;
             };
         }
-        //next button
+       
 
-
-
-
-        // Button click event to print PDF
-
-        /* private void button2_Click(object sender, EventArgs e)
- {
-     try
-     {
-         // Check if pdfData is null or empty
-         if (pdfData == null || pdfData.Length == 0)
-         {
-             MessageBox.Show("No PDF file data available.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-             return;
-         }
-
-         // Create a memory stream from the byte array
-         using (MemoryStream stream = new MemoryStream(pdfData))
-         {
-             // Load the PDF document from the memory stream
-             using (var image = Image.FromStream(stream))
-             {
-                 // Create a PrintDocument object
-                 PrintDocument pd = new PrintDocument();
-
-                 // Add PrintPage event handler
-                 pd.PrintPage += (s, pe) =>
-                 {
-                     // Draw the image on the print page
-                     pe.Graphics.DrawImage(image, pe.MarginBounds);
-                 };
-
-                 // Set printer settings
-                 PrintDialog printDialog = new PrintDialog();
-                 pd.PrinterSettings = printDialog.PrinterSettings;
-
-                 // Print the document
-                 pd.Print();
-             }
-         }
-
-         // Proceed to the loading form
-         loading next = new loading();
-         next.Show();
-         this.Hide();
-     }
-     catch (Exception ex)
-     {
-         MessageBox.Show($"An error occurred while printing the PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-     }
- }*/
 
 
 
@@ -210,7 +139,7 @@ namespace snaprint_try4
 
     private void button1_Click(object sender, EventArgs e)
         {
-            preferences back = new preferences(selectedFileName,pdfData);
+            preferences back = new preferences(selectedFileName, selectedFilePath, pdfData);
             back.Show();
             this.Hide();
         }

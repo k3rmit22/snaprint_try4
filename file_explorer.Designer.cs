@@ -47,8 +47,7 @@
             // listView1
             // 
             this.listView1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.listView1.BackColor = System.Drawing.Color.DimGray;
-            this.listView1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("listView1.BackgroundImage")));
+            this.listView1.BackColor = System.Drawing.Color.AliceBlue;
             this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listView1.ForeColor = System.Drawing.SystemColors.WindowText;
             this.listView1.HideSelection = false;
@@ -88,7 +87,7 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.BackColor = System.Drawing.Color.Lavender;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label1.Location = new System.Drawing.Point(236, 154);
@@ -101,7 +100,7 @@
             // 
             this.filenamelabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.filenamelabel.AutoSize = true;
-            this.filenamelabel.BackColor = System.Drawing.Color.Transparent;
+            this.filenamelabel.BackColor = System.Drawing.Color.Lavender;
             this.filenamelabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.filenamelabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.filenamelabel.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -115,7 +114,7 @@
             // 
             this.filetypelabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.filetypelabel.AutoSize = true;
-            this.filetypelabel.BackColor = System.Drawing.Color.Transparent;
+            this.filetypelabel.BackColor = System.Drawing.Color.Lavender;
             this.filetypelabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.filetypelabel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.filetypelabel.Location = new System.Drawing.Point(299, 154);
@@ -156,7 +155,7 @@
             // 
             this.Filepathtextbox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Filepathtextbox.AutoSize = true;
-            this.Filepathtextbox.BackColor = System.Drawing.Color.Transparent;
+            this.Filepathtextbox.BackColor = System.Drawing.Color.Lavender;
             this.Filepathtextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Filepathtextbox.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Filepathtextbox.Location = new System.Drawing.Point(151, 154);
@@ -168,7 +167,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pictureBox2.BackColor = System.Drawing.Color.Lavender;
             this.pictureBox2.Location = new System.Drawing.Point(141, 139);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(828, 42);
@@ -180,8 +179,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(1110, 733);
             this.Controls.Add(this.Filepathtextbox);
             this.Controls.Add(this.pictureBox1);

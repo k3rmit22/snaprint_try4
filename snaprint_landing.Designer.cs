@@ -48,7 +48,7 @@
             this.INSERT.AutoSize = true;
             this.INSERT.BackColor = System.Drawing.Color.Transparent;
             this.INSERT.Font = new System.Drawing.Font("Bookman Old Style", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.INSERT.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.INSERT.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.INSERT.Location = new System.Drawing.Point(154, 445);
             this.INSERT.Name = "INSERT";
             this.INSERT.Size = new System.Drawing.Size(799, 47);
@@ -112,8 +112,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(124)))), ((int)(((byte)(108)))));
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackColor = System.Drawing.Color.AliceBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1100, 700);
             this.Controls.Add(this.pictureBox1);
