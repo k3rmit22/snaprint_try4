@@ -76,11 +76,11 @@ namespace snaprint_try4
                     e.Handled = true;
             };
         }
-       
 
 
 
 
+        /*
         private void button2_Click(object sender, EventArgs e)
         {
             try
@@ -104,7 +104,7 @@ namespace snaprint_try4
                             {
                                 SetPrinterSettingsToGreyscale(printDocument);
                             }
-                            else if (printingOption.Equals("", StringComparison.OrdinalIgnoreCase))
+                            else if (printingOption.Equals("Colored", StringComparison.OrdinalIgnoreCase)) // inadd yung Colored kagabi wala pero working 
                             {
                                 SetPrinterSettingsToColored(printDocument);
                             }
@@ -127,7 +127,60 @@ namespace snaprint_try4
             {
                 MessageBox.Show($"An error occurred while printing the PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        } */ // button printing without copies 
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!ValidatePdfData(pdfData))
+                {
+                    // Validation failed, return without printing
+                    return;
+                }
+
+                // Convert the selected copies to an integer
+                int numberOfCopies = int.Parse(selectedCopies);
+
+                // Loop to print multiple copies
+                for (int i = 0; i < numberOfCopies; i++)
+                {
+                    using (MemoryStream memoryStream = new MemoryStream(pdfData))
+                    {
+                        using (PdfDocument pdfDocument = PdfDocument.Load(memoryStream))
+                        {
+                            using (PrintDocument printDocument = pdfDocument.CreatePrintDocument())
+                            {
+                                // Apply printer settings based on the preferred printing option
+                                if (printingOption.Equals("Black", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    SetPrinterSettingsToGreyscale(printDocument);
+                                }
+                                else if (printingOption.Equals("Colored", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    SetPrinterSettingsToColored(printDocument);
+                                }
+
+                                // Print the document
+                                printDocument.Print();
+                            }
+                        }
+                    }
+                }
+
+                // Show the loading form after printing
+                loading next = new loading();
+                next.Show();
+
+                // Close the summary form
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while printing the PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         private void SetPrinterSettingsToGreyscale(PrintDocument printDocument)
         {
