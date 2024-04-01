@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Management;
 using System.IO;
-using System.Runtime.Remoting.Messaging;
-using System.Threading.Tasks;
+using System.Printing;
+using System.Drawing.Printing;
+
+
 
 
 namespace snaprint_try4
@@ -25,6 +22,7 @@ namespace snaprint_try4
             //InitializeRemovalWatcher();
             InitializeKioskMode();
             SetDoubleBufferred();
+           CheckPrinterStatus();
 
         }
 
@@ -53,8 +51,8 @@ namespace snaprint_try4
         {
 
         }
-      
-       
+
+
 
         private void browse_button_Click(object sender, EventArgs e)
         {
@@ -103,12 +101,85 @@ namespace snaprint_try4
             }
         }
 
+        private void CheckPrinterStatus()
+        {
+            try
+            {
+                string defaultPrinterName = new PrinterSettings().PrinterName;
+                string query = $"SELECT * from Win32_Printer WHERE Name LIKE '%{defaultPrinterName}%'";
+                ManagementObjectSearcher searcher = new ManagementObjectSearcher(query);
+                ManagementObjectCollection coll = searcher.Get();
 
+                foreach (ManagementObject printer in coll)
+                {
+                    string printerStatus = printer["PrinterStatus"].ToString();
+                    string printerState = printer["PrinterState"].ToString();
 
+                    // Check printer status
+                    if (printerStatus == "3" || printerState == "4")
+                    {
+                        Console.WriteLine("Printer status: Printer is idle and ready.");
+                    }
+                    else if (printerStatus == "4")
+                    {
+                        Console.WriteLine("Printer status: Printer is printing.");
+                    }
+                    else if (printerStatus == "5")
+                    {
+                        Console.WriteLine("Printer status: Printer is warmup.");
+                    }
+                    else if (printerStatus == "6")
+                    {
+                        Console.WriteLine("Printer status: Printer is stopped.");
+                    }
+                    else if (printerStatus == "7")
+                    {
+                        Console.WriteLine("Printer status: Printer is offline.");
+                    }
+                    else if (printerStatus == "8")
+                    {
+                        Console.WriteLine("Printer status: Printer is offline.");
+                    }
+                    else if (printerStatus == "9")
+                    {
+                        Console.WriteLine("Printer status: Printer is paper jammed.");
+                    }
+                    else if (printerStatus == "10")
+                    {
+                        Console.WriteLine("Printer status: Printer is out of paper.");
+                    }
+                    else if (printerStatus == "11")
+                    {
+                        Console.WriteLine("Printer status: Printer needs user intervention.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Printer status: Unknown printer status.");
+                    }
 
+                    // Check if printer is low on ink
+                    if (printer["ExtendedPrinterStatus"].ToString() == "3")
+                    {
+                        Console.WriteLine("Printer is low on ink.");
+                    }
 
-
-
+                    // Check if printer is offline
+                    if (printer["ExtendedPrinterStatus"].ToString() == "2")
+                    {
+                        Console.WriteLine("Printer is offline.");
+                    }
+                }
+            }
+            catch (ManagementException e)
+            {
+                Console.WriteLine("An error occurred while querying WMI: " + e.Message);
+            }
+        } 
     }
+
+
+
+
 }
+
 

@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(preferences));
-            this.selectpapersize = new System.Windows.Forms.GroupBox();
-            this.labelpapersize = new System.Windows.Forms.Label();
-            this.combosize = new System.Windows.Forms.ComboBox();
             this.colorofpaper = new System.Windows.Forms.GroupBox();
             this.combocolor = new System.Windows.Forms.ComboBox();
             this.labelcolor = new System.Windows.Forms.Label();
@@ -44,50 +41,17 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pdfViewer1 = new PdfiumViewer.PdfViewer();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.selectpapersize.SuspendLayout();
+            this.combosize = new System.Windows.Forms.ComboBox();
+            this.labelpapersize = new System.Windows.Forms.Label();
+            this.selectpapersize = new System.Windows.Forms.GroupBox();
             this.colorofpaper.SuspendLayout();
             this.groupcopies.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.selectpapersize.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // selectpapersize
-            // 
-            this.selectpapersize.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.selectpapersize.BackColor = System.Drawing.Color.Transparent;
-            this.selectpapersize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.selectpapersize.Controls.Add(this.labelpapersize);
-            this.selectpapersize.Controls.Add(this.combosize);
-            this.selectpapersize.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectpapersize.Location = new System.Drawing.Point(887, 242);
-            this.selectpapersize.Name = "selectpapersize";
-            this.selectpapersize.Size = new System.Drawing.Size(334, 122);
-            this.selectpapersize.TabIndex = 4;
-            this.selectpapersize.TabStop = false;
-            // 
-            // labelpapersize
-            // 
-            this.labelpapersize.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelpapersize.AutoSize = true;
-            this.labelpapersize.Location = new System.Drawing.Point(42, 58);
-            this.labelpapersize.Name = "labelpapersize";
-            this.labelpapersize.Size = new System.Drawing.Size(114, 25);
-            this.labelpapersize.TabIndex = 1;
-            this.labelpapersize.Text = "Paper Size:";
-            // 
-            // combosize
-            // 
-            this.combosize.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.combosize.FormattingEnabled = true;
-            this.combosize.Items.AddRange(new object[] {
-            "Short",
-            "Long"});
-            this.combosize.Location = new System.Drawing.Point(162, 50);
-            this.combosize.Name = "combosize";
-            this.combosize.Size = new System.Drawing.Size(121, 33);
-            this.combosize.TabIndex = 0;
             // 
             // colorofpaper
             // 
@@ -221,6 +185,42 @@
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             // 
+            // combosize
+            // 
+            this.combosize.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.combosize.FormattingEnabled = true;
+            this.combosize.Items.AddRange(new object[] {
+            "Short",
+            "Long"});
+            this.combosize.Location = new System.Drawing.Point(162, 50);
+            this.combosize.Name = "combosize";
+            this.combosize.Size = new System.Drawing.Size(121, 33);
+            this.combosize.TabIndex = 0;
+            // 
+            // labelpapersize
+            // 
+            this.labelpapersize.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelpapersize.AutoSize = true;
+            this.labelpapersize.Location = new System.Drawing.Point(42, 58);
+            this.labelpapersize.Name = "labelpapersize";
+            this.labelpapersize.Size = new System.Drawing.Size(114, 25);
+            this.labelpapersize.TabIndex = 1;
+            this.labelpapersize.Text = "Paper Size:";
+            // 
+            // selectpapersize
+            // 
+            this.selectpapersize.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.selectpapersize.BackColor = System.Drawing.Color.Transparent;
+            this.selectpapersize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.selectpapersize.Controls.Add(this.labelpapersize);
+            this.selectpapersize.Controls.Add(this.combosize);
+            this.selectpapersize.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectpapersize.Location = new System.Drawing.Point(887, 242);
+            this.selectpapersize.Name = "selectpapersize";
+            this.selectpapersize.Size = new System.Drawing.Size(334, 122);
+            this.selectpapersize.TabIndex = 4;
+            this.selectpapersize.TabStop = false;
+            // 
             // preferences
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -241,8 +241,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "preferences";
             this.Load += new System.EventHandler(this.preferences_Load);
-            this.selectpapersize.ResumeLayout(false);
-            this.selectpapersize.PerformLayout();
             this.colorofpaper.ResumeLayout(false);
             this.colorofpaper.PerformLayout();
             this.groupcopies.ResumeLayout(false);
@@ -251,19 +249,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.selectpapersize.ResumeLayout(false);
+            this.selectpapersize.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.GroupBox selectpapersize;
         private System.Windows.Forms.GroupBox colorofpaper;
         private System.Windows.Forms.GroupBox groupcopies;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Label labelpapersize;
-        private System.Windows.Forms.ComboBox combosize;
         private System.Windows.Forms.Label labelcolor;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox combocolor;
@@ -272,5 +269,8 @@
         private System.Windows.Forms.Label filename;
         private PdfiumViewer.PdfViewer pdfViewer1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ComboBox combosize;
+        private System.Windows.Forms.Label labelpapersize;
+        private System.Windows.Forms.GroupBox selectpapersize;
     }
 }

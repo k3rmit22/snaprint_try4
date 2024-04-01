@@ -5,6 +5,12 @@ using System.IO;
 using System.Drawing.Printing;
 using System.Drawing;
 using PdfiumViewer;
+using System.Printing;
+using System.Drawing.Printing;
+using System.Management;
+using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
+
 
 
 
@@ -14,6 +20,7 @@ namespace snaprint_try4
 {
     public partial class summary : Form
     {
+        MySqlConnection conn = new MySqlConnection("Server=localhost;Port=3306;Database=admin_user;Uid=root;Pwd=;");
         private string printingOption;
         private string selectedFileName; //display file
 
@@ -31,6 +38,10 @@ namespace snaprint_try4
             InitializeComponent();
             InitializeKioskMode();
             SetDoubleBufferred();
+          //  CheckPrinterStatus();
+     
+
+
 
 
 
@@ -58,8 +69,8 @@ namespace snaprint_try4
             this.DoubleBuffered = true;
         }
 
-        
-       
+
+
 
         //kiosk mode
         private void InitializeKioskMode()
@@ -133,6 +144,8 @@ namespace snaprint_try4
         {
             try
             {
+               // CheckPrinterStatus();
+
                 if (!ValidatePdfData(pdfData))
                 {
                     // Validation failed, return without printing
@@ -213,17 +226,17 @@ namespace snaprint_try4
             }
         }
 
-      
-    
 
-    private void button1_Click(object sender, EventArgs e)
+
+
+        private void button1_Click(object sender, EventArgs e)
         {
             preferences back = new preferences(selectedFileName, selectedFilePath, pdfData);
             back.Show();
             this.Hide();
         }
 
-      
+
         private bool ValidatePdfData(byte[] pdfData)
         {
             // Check for null or empty data
@@ -259,6 +272,8 @@ namespace snaprint_try4
             return false;
         }
 
+
+
         protected override CreateParams CreateParams
         {
             get
@@ -270,7 +285,32 @@ namespace snaprint_try4
         }
 
 
+
+        private void ReportIssueButton_Click(object sender, EventArgs e)
+        {
+            // Show the report dialog
+            using (ReportDialog dialog = new ReportDialog())
+            {
+                // Display the dialog box
+                dialog.ShowDialog();
+
+                // After the dialog is closed, you can access the report text from dialog.textBox.Text
+                string report = dialog.textBox.Text;
+
+                // You can then process the report text as needed
+                if (!string.IsNullOrEmpty(report))
+                {
+                    // Here you can send the report to your database or perform any other necessary action
+                    MessageBox.Show("Report submitted successfully: " + report, "Report Submitted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("No report submitted.", "No Report", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
     }
+
 
 }
 

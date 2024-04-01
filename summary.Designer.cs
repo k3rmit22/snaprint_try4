@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(summary));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -45,6 +46,8 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.filename = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.ReportIssueButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -255,12 +258,31 @@
             this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
             // 
+            // ReportIssueButton
+            // 
+            this.ReportIssueButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ReportIssueButton.BackColor = System.Drawing.Color.Transparent;
+            this.ReportIssueButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ReportIssueButton.BackgroundImage")));
+            this.ReportIssueButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ReportIssueButton.FlatAppearance.BorderSize = 0;
+            this.ReportIssueButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ReportIssueButton.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReportIssueButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ReportIssueButton.Location = new System.Drawing.Point(451, 480);
+            this.ReportIssueButton.Name = "ReportIssueButton";
+            this.ReportIssueButton.Size = new System.Drawing.Size(178, 75);
+            this.ReportIssueButton.TabIndex = 16;
+            this.ReportIssueButton.Text = "Report a Problem";
+            this.ReportIssueButton.UseVisualStyleBackColor = false;
+            this.ReportIssueButton.Click += new System.EventHandler(this.ReportIssueButton_Click);
+            // 
             // summary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
             this.ClientSize = new System.Drawing.Size(1068, 622);
+            this.Controls.Add(this.ReportIssueButton);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.filename);
             this.Controls.Add(this.pictureBox2);
@@ -301,5 +323,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label filename;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button ReportIssueButton;
     }
 }
