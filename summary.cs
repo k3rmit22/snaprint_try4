@@ -10,8 +10,7 @@ using System.Drawing.Printing;
 using System.Management;
 using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
-
-
+using System.IO.Ports;
 
 
 
@@ -33,16 +32,27 @@ namespace snaprint_try4
 
         private double totalPrice;
 
+        private double balance = 0; // Variable to store the balance
+
+       
+
+
+        SerialPort serialPort = new SerialPort();
+
         public summary(string selectedFileName, string copies, string color, string paperSize, byte[] pdfData, double totalPrice, string printingOption)
         {
             InitializeComponent();
             InitializeKioskMode();
             SetDoubleBufferred();
-          //  CheckPrinterStatus();
-     
+            //  CheckPrinterStatus();
 
+            serialPort.PortName = "COM8"; // Change the port name to match the Arduino's port
+            serialPort.BaudRate = 9600; // Set the baud rate to match the Arduino's baud rate
+            serialPort.DataReceived += SerialPort_DataReceived; // Subscribe to DataReceived event
+            serialPort.Open();
 
-
+            // Send the total price to the Arduino
+            //SendTotalPriceToESP32(totalPrice);
 
 
             this.selectedCopies = copies;
@@ -63,7 +73,195 @@ namespace snaprint_try4
             // Store the PDF file data
             this.pdfData = pdfData;
             // PrintPdf(); ibalik mamaya 
+
+            SendTotalPriceToESP32(totalPrice);
         }
+
+        private void summary_Load(object sender, EventArgs e)
+        {
+            SendTotalPriceToESP32(totalPrice);
+        }
+
+
+        private void SendTotalPriceToESP32(double totalPrice)
+        {
+            try
+            {
+                // Convert the double value to a string
+                string totalPriceStr = totalPrice.ToString();
+
+                // Send the string over the serial port to the ESP32
+                serialPort.WriteLine(totalPriceStr);
+
+                // Print a console message indicating that the total price is sent
+                Console.WriteLine("Sent total price to ESP32: " + totalPrice);
+
+                // Check if total price is sent successfully
+                if (serialPort.BytesToWrite == 0)
+                {
+                    // Debugging message
+                    Console.WriteLine("Total price sent successfully.");
+                }
+                else
+                {
+                    // Debugging message
+                    Console.WriteLine("Failed to send total price.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error sending total price to ESP32: " + ex.Message);
+            }
+        }
+
+
+
+        /*
+        private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            try
+            {
+                // Read data from the serial port
+                string receivedDataStr = serialPort.ReadLine(); // Read the data as a string
+                double receivedData = double.Parse(receivedDataStr); // Convert the string to a double
+
+                // Store the received data as the balance
+                balance = (int)receivedData;
+                Console.WriteLine("Received balance: " + balance);
+
+                // Update the balance display
+                UpdateBalance(balance);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error reading balance data from ESP32: " + ex.Message);
+            }
+        } */
+
+
+        private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            try
+            {
+                // Read data from the serial port
+                string receivedDataStr = serialPort.ReadLine(); // Read the data as a string
+
+                // Display the received string in the console
+                Console.WriteLine("Received data from ESP32: " + receivedDataStr);
+
+                // Convert the string to a double
+                if (double.TryParse(receivedDataStr, out double balance))
+                {
+                    // Update the balance display
+                    UpdateBalance(receivedDataStr);
+
+                    // Print a message indicating successful conversion
+                    Console.WriteLine("Successfully converted balance data to double: " + balance);
+                    if (balance >= totalPrice)
+                    {
+                        // Reset the balance
+                        balance = 0;
+                        Console.WriteLine("Balance reset to zero.");
+                        UpdateBalance("Payment success!!");
+                        serialPort.DiscardInBuffer();
+
+                        // Print the document
+                        try
+                        {
+                            // CheckPrinterStatus();
+
+                            if (!ValidatePdfData(pdfData))
+                            {
+                                // Validation failed, return without printing
+                                return;
+                            }
+
+                            // Convert the selected copies to an integer
+                            int numberOfCopies = int.Parse(selectedCopies);
+
+                            // Loop to print multiple copies
+                            for (int i = 0; i < numberOfCopies; i++)
+                            {
+                                using (MemoryStream memoryStream = new MemoryStream(pdfData))
+                                {
+                                    using (PdfDocument pdfDocument = PdfDocument.Load(memoryStream))
+                                    {
+                                        using (PrintDocument printDocument = pdfDocument.CreatePrintDocument())
+                                        {
+                                            // Apply printer settings based on the preferred printing option
+                                            if (printingOption.Equals("Black", StringComparison.OrdinalIgnoreCase))
+                                            {
+                                                SetPrinterSettingsToGreyscale(printDocument);
+                                            }
+                                            else if (printingOption.Equals("Colored", StringComparison.OrdinalIgnoreCase))
+                                            {
+                                                SetPrinterSettingsToColored(printDocument);
+                                            }
+
+                                            // Print the document
+                                            printDocument.Print();
+                                        }
+                                    }
+                                }
+                            }
+
+                            // Show the loading form after printing
+                            loading next = new loading();
+                            next.Show();
+
+                            // Close the summary form
+                            this.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"An error occurred while printing the PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Error: Unable to parse balance data.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error reading balance data from ESP32: " + ex.Message);
+            }
+        }
+
+
+       
+       
+       private void UpdateBalance(string balanceStr)
+       {
+       // Update the text of lblamount_ins label with the received balance
+       label1.Invoke((MethodInvoker)(() => label1.Text = balanceStr));
+       }
+  
+
+
+
+
+      //  private void UpdateBalance(double balance)
+     //   {
+            // Update the text of lblamount_ins label with the received balance
+      //      label1.Invoke((MethodInvoker)(() => label1.Text = balance.ToString()));
+     //   }
+
+
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            base.OnFormClosed(e);
+            if (serialPort.IsOpen)
+            {
+                serialPort.Close(); // Close the serial port if it's open
+            }
+        }
+
+
+
+
         private void SetDoubleBufferred()
         {
             this.DoubleBuffered = true;
@@ -233,7 +431,7 @@ namespace snaprint_try4
         {
             preferences back = new preferences(selectedFileName, selectedFilePath, pdfData);
             back.Show();
-            this.Hide();
+            this.Close();
         }
 
 
@@ -310,6 +508,8 @@ namespace snaprint_try4
             }
         }
     }
+
+
 
 
 }

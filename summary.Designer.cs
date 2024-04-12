@@ -48,8 +48,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.ReportIssueButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -66,9 +68,11 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.labelpaper23);
-            this.groupBox1.Location = new System.Drawing.Point(426, 167);
+            this.groupBox1.Location = new System.Drawing.Point(568, 206);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(231, 295);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(308, 363);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             // 
@@ -78,9 +82,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkRed;
-            this.label2.Location = new System.Drawing.Point(42, 27);
+            this.label2.Location = new System.Drawing.Point(56, 33);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(147, 32);
+            this.label2.Size = new System.Drawing.Size(185, 40);
             this.label2.TabIndex = 7;
             this.label2.Text = "SUMMARY";
             // 
@@ -89,9 +94,10 @@
             this.labelColor.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelColor.AutoSize = true;
             this.labelColor.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelColor.Location = new System.Drawing.Point(74, 157);
+            this.labelColor.Location = new System.Drawing.Point(99, 193);
+            this.labelColor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelColor.Name = "labelColor";
-            this.labelColor.Size = new System.Drawing.Size(17, 16);
+            this.labelColor.Size = new System.Drawing.Size(23, 19);
             this.labelColor.TabIndex = 6;
             this.labelColor.Text = "--";
             // 
@@ -100,9 +106,10 @@
             this.labelCopies.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelCopies.AutoSize = true;
             this.labelCopies.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCopies.Location = new System.Drawing.Point(84, 111);
+            this.labelCopies.Location = new System.Drawing.Point(112, 137);
+            this.labelCopies.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCopies.Name = "labelCopies";
-            this.labelCopies.Size = new System.Drawing.Size(17, 16);
+            this.labelCopies.Size = new System.Drawing.Size(23, 19);
             this.labelCopies.TabIndex = 5;
             this.labelCopies.Text = "--";
             // 
@@ -111,9 +118,10 @@
             this.labelPaperSize.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelPaperSize.AutoSize = true;
             this.labelPaperSize.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPaperSize.Location = new System.Drawing.Point(106, 68);
+            this.labelPaperSize.Location = new System.Drawing.Point(141, 84);
+            this.labelPaperSize.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPaperSize.Name = "labelPaperSize";
-            this.labelPaperSize.Size = new System.Drawing.Size(17, 16);
+            this.labelPaperSize.Size = new System.Drawing.Size(23, 19);
             this.labelPaperSize.TabIndex = 4;
             this.labelPaperSize.Text = "--";
             // 
@@ -123,9 +131,10 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.DarkRed;
-            this.label4.Location = new System.Drawing.Point(22, 157);
+            this.label4.Location = new System.Drawing.Point(29, 193);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 16);
+            this.label4.Size = new System.Drawing.Size(58, 19);
             this.label4.TabIndex = 3;
             this.label4.Text = "Color:";
             // 
@@ -135,9 +144,10 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DarkRed;
-            this.label3.Location = new System.Drawing.Point(22, 111);
+            this.label3.Location = new System.Drawing.Point(29, 137);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 16);
+            this.label3.Size = new System.Drawing.Size(72, 19);
             this.label3.TabIndex = 2;
             this.label3.Text = "Copies:";
             // 
@@ -147,9 +157,10 @@
             this.labelpaper23.AutoSize = true;
             this.labelpaper23.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelpaper23.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelpaper23.Location = new System.Drawing.Point(22, 68);
+            this.labelpaper23.Location = new System.Drawing.Point(29, 84);
+            this.labelpaper23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelpaper23.Name = "labelpaper23";
-            this.labelpaper23.Size = new System.Drawing.Size(78, 16);
+            this.labelpaper23.Size = new System.Drawing.Size(99, 19);
             this.labelpaper23.TabIndex = 1;
             this.labelpaper23.Text = "Paper Size:";
             // 
@@ -161,9 +172,11 @@
             this.groupBox2.Controls.Add(this.lblTotalPrice);
             this.groupBox2.Font = new System.Drawing.Font("Bookman Old Style", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.groupBox2.Location = new System.Drawing.Point(755, 151);
+            this.groupBox2.Location = new System.Drawing.Point(1007, 186);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(236, 100);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(315, 123);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "total:";
@@ -171,9 +184,10 @@
             // lblTotalPrice
             // 
             this.lblTotalPrice.AutoSize = true;
-            this.lblTotalPrice.Location = new System.Drawing.Point(6, 43);
+            this.lblTotalPrice.Location = new System.Drawing.Point(8, 53);
+            this.lblTotalPrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalPrice.Name = "lblTotalPrice";
-            this.lblTotalPrice.Size = new System.Drawing.Size(21, 20);
+            this.lblTotalPrice.Size = new System.Drawing.Size(28, 25);
             this.lblTotalPrice.TabIndex = 0;
             this.lblTotalPrice.Text = "--";
             // 
@@ -182,11 +196,14 @@
             this.groupBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox4.BackColor = System.Drawing.Color.White;
             this.groupBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Font = new System.Drawing.Font("Bookman Old Style", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.groupBox4.Location = new System.Drawing.Point(755, 310);
+            this.groupBox4.Location = new System.Drawing.Point(1007, 382);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(236, 115);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Size = new System.Drawing.Size(315, 142);
             this.groupBox4.TabIndex = 11;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Amount inserted:";
@@ -199,9 +216,10 @@
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(27, 531);
+            this.button1.Location = new System.Drawing.Point(36, 654);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 79);
+            this.button1.Size = new System.Drawing.Size(123, 97);
             this.button1.TabIndex = 12;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -214,9 +232,10 @@
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(949, 531);
+            this.button2.Location = new System.Drawing.Point(1265, 654);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(92, 79);
+            this.button2.Size = new System.Drawing.Size(123, 97);
             this.button2.TabIndex = 13;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -227,8 +246,9 @@
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(-1, -2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(537, 116);
+            this.pictureBox2.Size = new System.Drawing.Size(716, 143);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 14;
             this.pictureBox2.TabStop = false;
@@ -240,9 +260,10 @@
             this.filename.BackColor = System.Drawing.Color.Transparent;
             this.filename.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.filename.ForeColor = System.Drawing.Color.DarkRed;
-            this.filename.Location = new System.Drawing.Point(120, 442);
+            this.filename.Location = new System.Drawing.Point(160, 544);
+            this.filename.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.filename.Name = "filename";
-            this.filename.Size = new System.Drawing.Size(21, 20);
+            this.filename.Size = new System.Drawing.Size(28, 25);
             this.filename.TabIndex = 3;
             this.filename.Text = "--";
             // 
@@ -251,9 +272,10 @@
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(124, 194);
+            this.pictureBox1.Location = new System.Drawing.Point(165, 239);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(235, 231);
+            this.pictureBox1.Size = new System.Drawing.Size(313, 284);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
@@ -268,20 +290,30 @@
             this.ReportIssueButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ReportIssueButton.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReportIssueButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ReportIssueButton.Location = new System.Drawing.Point(451, 480);
+            this.ReportIssueButton.Location = new System.Drawing.Point(601, 591);
+            this.ReportIssueButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ReportIssueButton.Name = "ReportIssueButton";
-            this.ReportIssueButton.Size = new System.Drawing.Size(178, 75);
+            this.ReportIssueButton.Size = new System.Drawing.Size(237, 92);
             this.ReportIssueButton.TabIndex = 16;
             this.ReportIssueButton.Text = "Report a Problem";
             this.ReportIssueButton.UseVisualStyleBackColor = false;
             this.ReportIssueButton.Click += new System.EventHandler(this.ReportIssueButton_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 75);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(28, 25);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "--";
+            // 
             // summary
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
-            this.ClientSize = new System.Drawing.Size(1068, 622);
+            this.ClientSize = new System.Drawing.Size(1424, 766);
             this.Controls.Add(this.ReportIssueButton);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.filename);
@@ -292,6 +324,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "summary";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -299,6 +332,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -325,5 +360,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button ReportIssueButton;
+        private System.Windows.Forms.Label label1;
     }
 }

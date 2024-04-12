@@ -420,6 +420,9 @@
     <EmbeddedResource Include="loading.resx">
       <DependentUpon>loading.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportDialog.resx">
+      <DependentUpon>ReportDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="summary.resx">
       <DependentUpon>summary.cs</DependentUpon>
     </EmbeddedResource>
