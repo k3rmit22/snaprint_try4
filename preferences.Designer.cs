@@ -41,16 +41,16 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pdfViewer1 = new PdfiumViewer.PdfViewer();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.combosize = new System.Windows.Forms.ComboBox();
-            this.labelpapersize = new System.Windows.Forms.Label();
-            this.selectpapersize = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBoxPaperSize = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.colorofpaper.SuspendLayout();
             this.groupcopies.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.selectpapersize.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // colorofpaper
@@ -61,26 +61,30 @@
             this.colorofpaper.Controls.Add(this.combocolor);
             this.colorofpaper.Controls.Add(this.labelcolor);
             this.colorofpaper.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colorofpaper.Location = new System.Drawing.Point(887, 507);
+            this.colorofpaper.Location = new System.Drawing.Point(1177, 598);
+            this.colorofpaper.Margin = new System.Windows.Forms.Padding(4);
             this.colorofpaper.Name = "colorofpaper";
-            this.colorofpaper.Size = new System.Drawing.Size(365, 92);
+            this.colorofpaper.Padding = new System.Windows.Forms.Padding(4);
+            this.colorofpaper.Size = new System.Drawing.Size(487, 113);
             this.colorofpaper.TabIndex = 5;
             this.colorofpaper.TabStop = false;
             // 
             // combocolor
             // 
             this.combocolor.FormattingEnabled = true;
-            this.combocolor.Location = new System.Drawing.Point(158, 41);
+            this.combocolor.Location = new System.Drawing.Point(211, 50);
+            this.combocolor.Margin = new System.Windows.Forms.Padding(4);
             this.combocolor.Name = "combocolor";
-            this.combocolor.Size = new System.Drawing.Size(207, 33);
+            this.combocolor.Size = new System.Drawing.Size(275, 37);
             this.combocolor.TabIndex = 1;
             // 
             // labelcolor
             // 
             this.labelcolor.AutoSize = true;
-            this.labelcolor.Location = new System.Drawing.Point(87, 41);
+            this.labelcolor.Location = new System.Drawing.Point(116, 50);
+            this.labelcolor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelcolor.Name = "labelcolor";
-            this.labelcolor.Size = new System.Drawing.Size(65, 25);
+            this.labelcolor.Size = new System.Drawing.Size(80, 29);
             this.labelcolor.TabIndex = 0;
             this.labelcolor.Text = "Color:";
             // 
@@ -92,27 +96,31 @@
             this.groupcopies.Controls.Add(this.combocopies);
             this.groupcopies.Controls.Add(this.label3);
             this.groupcopies.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupcopies.Location = new System.Drawing.Point(887, 370);
+            this.groupcopies.Location = new System.Drawing.Point(1177, 429);
+            this.groupcopies.Margin = new System.Windows.Forms.Padding(4);
             this.groupcopies.Name = "groupcopies";
-            this.groupcopies.Size = new System.Drawing.Size(334, 122);
+            this.groupcopies.Padding = new System.Windows.Forms.Padding(4);
+            this.groupcopies.Size = new System.Drawing.Size(445, 150);
             this.groupcopies.TabIndex = 5;
             this.groupcopies.TabStop = false;
             // 
             // combocopies
             // 
             this.combocopies.FormattingEnabled = true;
-            this.combocopies.Location = new System.Drawing.Point(162, 53);
+            this.combocopies.Location = new System.Drawing.Point(216, 65);
+            this.combocopies.Margin = new System.Windows.Forms.Padding(4);
             this.combocopies.Name = "combocopies";
-            this.combocopies.Size = new System.Drawing.Size(121, 33);
+            this.combocopies.Size = new System.Drawing.Size(160, 37);
             this.combocopies.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(76, 53);
+            this.label3.Location = new System.Drawing.Point(101, 65);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 25);
+            this.label3.Size = new System.Drawing.Size(99, 29);
             this.label3.TabIndex = 2;
             this.label3.Text = "Copies:";
             // 
@@ -122,9 +130,10 @@
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(1161, 621);
+            this.pictureBox3.Location = new System.Drawing.Point(1370, 766);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(100, 79);
+            this.pictureBox3.Size = new System.Drawing.Size(133, 97);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 5;
             this.pictureBox3.TabStop = false;
@@ -135,9 +144,10 @@
             this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(887, 611);
+            this.pictureBox4.Location = new System.Drawing.Point(1183, 752);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(112, 89);
+            this.pictureBox4.Size = new System.Drawing.Size(149, 110);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 6;
             this.pictureBox4.TabStop = false;
@@ -148,11 +158,12 @@
             this.filename.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.filename.AutoSize = true;
             this.filename.BackColor = System.Drawing.Color.Transparent;
-            this.filename.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filename.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
             this.filename.ForeColor = System.Drawing.Color.DarkRed;
-            this.filename.Location = new System.Drawing.Point(896, 198);
+            this.filename.Location = new System.Drawing.Point(1189, 197);
+            this.filename.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.filename.Name = "filename";
-            this.filename.Size = new System.Drawing.Size(21, 20);
+            this.filename.Size = new System.Drawing.Size(31, 29);
             this.filename.TabIndex = 3;
             this.filename.Text = "--";
             // 
@@ -161,9 +172,10 @@
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(850, 22);
+            this.pictureBox2.Location = new System.Drawing.Point(1133, 27);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(371, 116);
+            this.pictureBox2.Size = new System.Drawing.Size(495, 143);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 9;
             this.pictureBox2.TabStop = false;
@@ -172,61 +184,64 @@
             // 
             this.pdfViewer1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pdfViewer1.Location = new System.Drawing.Point(0, 0);
+            this.pdfViewer1.Margin = new System.Windows.Forms.Padding(5);
             this.pdfViewer1.Name = "pdfViewer1";
-            this.pdfViewer1.Size = new System.Drawing.Size(827, 712);
+            this.pdfViewer1.Size = new System.Drawing.Size(1103, 876);
             this.pdfViewer1.TabIndex = 10;
             this.pdfViewer1.Load += new System.EventHandler(this.pdfViewer1_Load);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(176, 26);
+            this.pictureBox1.Size = new System.Drawing.Size(235, 32);
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             // 
-            // combosize
+            // groupBox1
             // 
-            this.combosize.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.combosize.FormattingEnabled = true;
-            this.combosize.Items.AddRange(new object[] {
-            "Short",
-            "Long"});
-            this.combosize.Location = new System.Drawing.Point(162, 50);
-            this.combosize.Name = "combosize";
-            this.combosize.Size = new System.Drawing.Size(121, 33);
-            this.combosize.TabIndex = 0;
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBox1.Controls.Add(this.comboBoxPaperSize);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(1177, 271);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(445, 150);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
             // 
-            // labelpapersize
+            // comboBoxPaperSize
             // 
-            this.labelpapersize.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelpapersize.AutoSize = true;
-            this.labelpapersize.Location = new System.Drawing.Point(42, 58);
-            this.labelpapersize.Name = "labelpapersize";
-            this.labelpapersize.Size = new System.Drawing.Size(114, 25);
-            this.labelpapersize.TabIndex = 1;
-            this.labelpapersize.Text = "Paper Size:";
+            this.comboBoxPaperSize.FormattingEnabled = true;
+            this.comboBoxPaperSize.Location = new System.Drawing.Point(193, 65);
+            this.comboBoxPaperSize.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxPaperSize.Name = "comboBoxPaperSize";
+            this.comboBoxPaperSize.Size = new System.Drawing.Size(160, 37);
+            this.comboBoxPaperSize.TabIndex = 3;
             // 
-            // selectpapersize
+            // label1
             // 
-            this.selectpapersize.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.selectpapersize.BackColor = System.Drawing.Color.Transparent;
-            this.selectpapersize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.selectpapersize.Controls.Add(this.labelpapersize);
-            this.selectpapersize.Controls.Add(this.combosize);
-            this.selectpapersize.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectpapersize.Location = new System.Drawing.Point(887, 242);
-            this.selectpapersize.Name = "selectpapersize";
-            this.selectpapersize.Size = new System.Drawing.Size(334, 122);
-            this.selectpapersize.TabIndex = 4;
-            this.selectpapersize.TabStop = false;
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(101, 65);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 29);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Size:";
             // 
             // preferences
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
-            this.ClientSize = new System.Drawing.Size(1258, 712);
+            this.ClientSize = new System.Drawing.Size(1677, 876);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pdfViewer1);
             this.Controls.Add(this.filename);
@@ -235,8 +250,8 @@
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.groupcopies);
             this.Controls.Add(this.colorofpaper);
-            this.Controls.Add(this.selectpapersize);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "preferences";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "preferences";
@@ -249,8 +264,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.selectpapersize.ResumeLayout(false);
-            this.selectpapersize.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -269,8 +284,8 @@
         private System.Windows.Forms.Label filename;
         private PdfiumViewer.PdfViewer pdfViewer1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ComboBox combosize;
-        private System.Windows.Forms.Label labelpapersize;
-        private System.Windows.Forms.GroupBox selectpapersize;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox comboBoxPaperSize;
+        private System.Windows.Forms.Label label1;
     }
 }

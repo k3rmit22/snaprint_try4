@@ -165,7 +165,7 @@ namespace snaprint_try4
                         show.Show();
 
                         // Hide the current form
-                        this.Hide();
+                        this.Close();
                     }
                 }
                 else

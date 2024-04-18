@@ -11,6 +11,7 @@ using System.Management;
 using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
 using System.IO.Ports;
+using System.Linq;
 
 
 
@@ -28,6 +29,7 @@ namespace snaprint_try4
         private string selectedPaperSize;
         private byte[] pdfData; // Store the PDF file data here
         private string selectedFilePath;
+        
 
 
         private double totalPrice;
@@ -39,11 +41,12 @@ namespace snaprint_try4
 
         SerialPort serialPort = new SerialPort();
 
-        public summary(string selectedFileName, string copies, string color, string paperSize, byte[] pdfData, double totalPrice, string printingOption)
+        public summary(string selectedFileName, string copies, string color, string selectedPaperSize, byte[] pdfData, double totalPrice, string printingOption)
         {
             InitializeComponent();
             InitializeKioskMode();
             SetDoubleBufferred();
+
             //  CheckPrinterStatus();
 
             serialPort.PortName = "COM8"; // Change the port name to match the Arduino's port
@@ -57,16 +60,19 @@ namespace snaprint_try4
 
             this.selectedCopies = copies;
             this.selectedColor = color;
-            this.selectedPaperSize = paperSize;
+            this.selectedPaperSize = selectedPaperSize;
             this.selectedFileName = selectedFileName; // Assign parameter value to the field
             this.totalPrice = totalPrice;
             this.printingOption = printingOption;
+          //  this.selectedPrinter = selectedPrinter; // get selected printer
+            
+
 
             // Display selected items in labels
 
             labelCopies.Text = copies;
             labelColor.Text = color;
-            labelPaperSize.Text = paperSize;
+            labelPaperSize.Text = selectedPaperSize;
             filename.Text = selectedFileName;
             lblTotalPrice.Text = $"Total Price: ₱{totalPrice:N2}";
 
@@ -80,6 +86,7 @@ namespace snaprint_try4
         private void summary_Load(object sender, EventArgs e)
         {
             SendTotalPriceToESP32(totalPrice);
+            
         }
 
 
@@ -116,29 +123,264 @@ namespace snaprint_try4
 
 
 
-        /*
+        /*private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            try
+            {
+                // Read data from the serial port
+                string receivedDataStr = serialPort.ReadLine(); // Read the data as a string
+
+                // Display the received string in the console
+                Console.WriteLine("Received data from ESP32: " + receivedDataStr);
+
+                // Convert the string to a double
+                if (double.TryParse(receivedDataStr, out double balance))
+                {
+                    // Update the balance display
+                    UpdateBalance(receivedDataStr);
+
+                    // Print a message indicating successful conversion
+                    Console.WriteLine("Successfully converted balance data to double: " + balance);
+                    if (balance >= totalPrice)
+                    {
+                        try
+                        {
+                            // Reset the balance
+                            balance = 0;
+                            Console.WriteLine("Balance reset to zero.");
+                            UpdateBalance("Payment success!!");
+                            //UpdateBalance("0.00"); // Update UI with zero balance
+
+                            // Discard any remaining data in the serial port's input buffer
+                            serialPort.DiscardInBuffer();
+
+                            SelectPrinterBasedOnPaperSize();
+                            // Print the document
+                            try
+                            {
+                                // Convert the selected copies to an integer
+                                int numberOfCopies = int.Parse(selectedCopies);
+
+                                // Loop to print multiple copies
+                                for (int i = 0; i < numberOfCopies; i++)
+                                {
+                                    using (MemoryStream memoryStream = new MemoryStream(pdfData))
+                                    {
+                                        using (PdfDocument pdfDocument = PdfDocument.Load(memoryStream))
+                                        {
+                                            using (PrintDocument printDocument = pdfDocument.CreatePrintDocument())
+                                            {
+                                                // Apply printer settings based on the preferred printing option
+                                                if (printingOption.Equals("Black", StringComparison.OrdinalIgnoreCase))
+                                                {
+                                                    SetPrinterSettingsToGreyscale(printDocument);
+                                                }
+                                                else if (printingOption.Equals("Colored", StringComparison.OrdinalIgnoreCase))
+                                                {
+                                                    SetPrinterSettingsToColored(printDocument);
+                                                }
+
+                                                // Print the document
+                                                
+                                                printDocument.Print();
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show($"An error occurred while printing the PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Error: Unable to parse balance data.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error reading balance data from ESP32: " + ex.Message);
+            }
+        }
+        */
+
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             try
             {
                 // Read data from the serial port
                 string receivedDataStr = serialPort.ReadLine(); // Read the data as a string
-                double receivedData = double.Parse(receivedDataStr); // Convert the string to a double
 
-                // Store the received data as the balance
-                balance = (int)receivedData;
-                Console.WriteLine("Received balance: " + balance);
+                // Display the received string in the console
+                Console.WriteLine("Received data from ESP32: " + receivedDataStr);
 
-                // Update the balance display
-                UpdateBalance(balance);
+                // Convert the string to a double
+                if (double.TryParse(receivedDataStr, out double balance))
+                {
+                    // Update the balance display
+                    UpdateBalance(receivedDataStr);
+
+                    // Print a message indicating successful conversion
+                    Console.WriteLine("Successfully converted balance data to double: " + balance);
+                    if (balance >= totalPrice)
+                    {
+                        try
+                        {
+                            // Reset the balance
+                            balance = 0;
+                            Console.WriteLine("Balance reset to zero.");
+                            UpdateBalance("Payment success!!");
+                            //UpdateBalance("0.00"); // Update UI with zero balance
+
+                            // Discard any remaining data in the serial port's input buffer
+                            serialPort.DiscardInBuffer();
+
+                            // Call the method to print the document
+                            try
+                            {
+                               
+                                PrintDocument();
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show($"An error occurred while printing the document: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Error: Unable to parse balance data.");
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error reading balance data from ESP32: " + ex.Message);
             }
-        } */
+        }
+
+        //code for printing the docu
+        /*
+                private void PrintDocument()
+                {
+                    try
+                    {
+                        // Convert the selected copies to an integer
+                        int numberOfCopies = int.Parse(selectedCopies);
+
+                        string selectedPrinter = GetPrinterBasedOnPaperSize();
+
+                        // Loop to print multiple copies
+                        for (int i = 0; i < numberOfCopies; i++)
+                        {
+                            using (MemoryStream memoryStream = new MemoryStream(pdfData))
+                            {
+                                using (PdfDocument pdfDocument = PdfDocument.Load(memoryStream))
+                                {
+                                    using (PrintDocument printDocument = pdfDocument.CreatePrintDocument())
+                                    {
+                                        // Apply printer settings based on the preferred printing option
+                                        if (printingOption.Equals("Black", StringComparison.OrdinalIgnoreCase))
+                                        {
+                                            SetPrinterSettingsToGreyscale(printDocument);
+                                        }
+                                        else if (printingOption.Equals("Colored", StringComparison.OrdinalIgnoreCase))
+                                        {
+                                            SetPrinterSettingsToColored(printDocument);
+                                        }
+
+                                        // Print the document
+                                        printDocument.Print();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"An error occurred while printing the PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+        */
+
+        private void PrintDocument()
+        {
+            try
+            {
+                // Convert the selected copies to an integer
+                int numberOfCopies = int.Parse(selectedCopies);
+
+                // Initialize the printer name variable
+                string selectedPrinter = "";
+
+                // Check the selected paper size
+                if (selectedPaperSize == "Long")
+                {
+                    // If the selected paper size is "Long", set the printer name to the Brother printer
+                    selectedPrinter = "Brother DCP-T420W Printer";
+                }
+                else if (selectedPaperSize == "Short")
+                {
+                    // If the selected paper size is "Short", set the printer name to the Canon printer
+                    selectedPrinter = "Canon E470 series";
+                }
+                else
+                {
+                    // Handle any other cases or set a default printer name
+                    selectedPrinter = "Default Printer";
+                }
+
+                // Loop to print multiple copies
+                for (int i = 0; i < numberOfCopies; i++)
+                {
+                    using (MemoryStream memoryStream = new MemoryStream(pdfData))
+                    {
+                        using (PdfDocument pdfDocument = PdfDocument.Load(memoryStream))
+                        {
+                            using (PrintDocument printDocument = pdfDocument.CreatePrintDocument())
+                            {
+                                // Set the selected printer for printing
+                                printDocument.PrinterSettings.PrinterName = selectedPrinter;
+
+                                // Apply printer settings based on the preferred printing option
+                                if (printingOption.Equals("Black", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    SetPrinterSettingsToGreyscale(printDocument);
+                                }
+                                else if (printingOption.Equals("Colored", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    SetPrinterSettingsToColored(printDocument);
+                                }
+
+                                // Print the document
+                                printDocument.Print();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while printing the PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
 
+
+
+
+        /*
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             try
@@ -166,56 +408,7 @@ namespace snaprint_try4
                         serialPort.DiscardInBuffer();
 
                         // Print the document
-                        try
-                        {
-                            // CheckPrinterStatus();
-
-                            if (!ValidatePdfData(pdfData))
-                            {
-                                // Validation failed, return without printing
-                                return;
-                            }
-
-                            // Convert the selected copies to an integer
-                            int numberOfCopies = int.Parse(selectedCopies);
-
-                            // Loop to print multiple copies
-                            for (int i = 0; i < numberOfCopies; i++)
-                            {
-                                using (MemoryStream memoryStream = new MemoryStream(pdfData))
-                                {
-                                    using (PdfDocument pdfDocument = PdfDocument.Load(memoryStream))
-                                    {
-                                        using (PrintDocument printDocument = pdfDocument.CreatePrintDocument())
-                                        {
-                                            // Apply printer settings based on the preferred printing option
-                                            if (printingOption.Equals("Black", StringComparison.OrdinalIgnoreCase))
-                                            {
-                                                SetPrinterSettingsToGreyscale(printDocument);
-                                            }
-                                            else if (printingOption.Equals("Colored", StringComparison.OrdinalIgnoreCase))
-                                            {
-                                                SetPrinterSettingsToColored(printDocument);
-                                            }
-
-                                            // Print the document
-                                            printDocument.Print();
-                                        }
-                                    }
-                                }
-                            }
-
-                            // Show the loading form after printing
-                            loading next = new loading();
-                            next.Show();
-
-                            // Close the summary form
-                            this.Close();
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show($"An error occurred while printing the PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        PrintDocument();
                     }
                 }
                 else
@@ -228,25 +421,52 @@ namespace snaprint_try4
                 Console.WriteLine("Error reading balance data from ESP32: " + ex.Message);
             }
         }
+        
+        private void PrintDocument()
+        {
+            try
+            {
+                // Convert the selected copies to an integer
+                int numberOfCopies = int.Parse(selectedCopies);
+
+                // Loop to print multiple copies
+                for (int i = 0; i < numberOfCopies; i++)
+                {
+                    using (MemoryStream memoryStream = new MemoryStream(pdfData))
+                    using (PdfDocument pdfDocument = PdfDocument.Load(memoryStream))
+                    using (PrintDocument printDocument = pdfDocument.CreatePrintDocument())
+                    {
+                        // Apply printer settings based on the preferred printing option
+                        if (printingOption.Equals("Black", StringComparison.OrdinalIgnoreCase))
+                        {
+                            SetPrinterSettingsToGreyscale(printDocument);
+                        }
+                        else if (printingOption.Equals("Colored", StringComparison.OrdinalIgnoreCase))
+                        {
+                            SetPrinterSettingsToColored(printDocument);
+                        }
+
+                        // Print the document
+                        printDocument.Print();
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while printing the PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        */
 
 
-       
-       
-       private void UpdateBalance(string balanceStr)
+        private void UpdateBalance(string balanceStr)
        {
        // Update the text of lblamount_ins label with the received balance
        label1.Invoke((MethodInvoker)(() => label1.Text = balanceStr));
        }
   
 
-
-
-
-      //  private void UpdateBalance(double balance)
-     //   {
-            // Update the text of lblamount_ins label with the received balance
-      //      label1.Invoke((MethodInvoker)(() => label1.Text = balance.ToString()));
-     //   }
 
 
 
@@ -289,108 +509,19 @@ namespace snaprint_try4
 
 
 
-        /*
         private void button2_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (!ValidatePdfData(pdfData))
-                {
-                    // Validation failed, return without printing
-                    return;
-                }
-
-                using (MemoryStream memoryStream = new MemoryStream(pdfData))
-                {
-                    using (PdfDocument pdfDocument = PdfDocument.Load(memoryStream))
-                    {
-                        using (PrintDocument printDocument = pdfDocument.CreatePrintDocument())
-                        {
-                           
-
-                            // Apply printer settings based on the preferred printing option
-                            if (printingOption.Equals("Black", StringComparison.OrdinalIgnoreCase))
-                            {
-                                SetPrinterSettingsToGreyscale(printDocument);
-                            }
-                            else if (printingOption.Equals("Colored", StringComparison.OrdinalIgnoreCase)) // inadd yung Colored kagabi wala pero working 
-                            {
-                                SetPrinterSettingsToColored(printDocument);
-                            }
-
-
-                            printDocument.Print();
-                           
-                            loading next = new loading();
-                            next.Show();
-
-                           
-                            this.Close();
-
-
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred while printing the PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        } */ // button printing without copies 
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            try
-            {
-               // CheckPrinterStatus();
-
-                if (!ValidatePdfData(pdfData))
-                {
-                    // Validation failed, return without printing
-                    return;
-                }
-
-                // Convert the selected copies to an integer
-                int numberOfCopies = int.Parse(selectedCopies);
-
-                // Loop to print multiple copies
-                for (int i = 0; i < numberOfCopies; i++)
-                {
-                    using (MemoryStream memoryStream = new MemoryStream(pdfData))
-                    {
-                        using (PdfDocument pdfDocument = PdfDocument.Load(memoryStream))
-                        {
-                            using (PrintDocument printDocument = pdfDocument.CreatePrintDocument())
-                            {
-                                // Apply printer settings based on the preferred printing option
-                                if (printingOption.Equals("Black", StringComparison.OrdinalIgnoreCase))
-                                {
-                                    SetPrinterSettingsToGreyscale(printDocument);
-                                }
-                                else if (printingOption.Equals("Colored", StringComparison.OrdinalIgnoreCase))
-                                {
-                                    SetPrinterSettingsToColored(printDocument);
-                                }
-
-                                // Print the document
-                                printDocument.Print();
-                            }
-                        }
-                    }
-                }
-
-                // Show the loading form after printing
-                loading next = new loading();
+            // Check if the balance is greater than or equal to the total price
+            
+                browse next = new browse();
                 next.Show();
 
                 // Close the summary form
                 this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred while printing the PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
+          
         }
+
 
 
         private void SetPrinterSettingsToGreyscale(PrintDocument printDocument)
@@ -507,7 +638,13 @@ namespace snaprint_try4
                 }
             }
         }
+
+       
     }
+
+
+
+
 
 
 

@@ -22,7 +22,7 @@ namespace snaprint_try4
             //InitializeRemovalWatcher();
             InitializeKioskMode();
             SetDoubleBufferred();
-           CheckPrinterStatus();
+           //CheckPrinterStatus();
 
         }
 
@@ -58,7 +58,7 @@ namespace snaprint_try4
         {
             file_explorer f2 = new file_explorer();
             f2.Show();
-            this.Hide();
+            this.Close();
 
         }
 
@@ -76,7 +76,7 @@ namespace snaprint_try4
                     // Open another form (snaprint_landing)
                     snaprint_landing form = new snaprint_landing();
                     form.Show();
-                    this.Hide(); // Hide the current form if needed
+                    this.Close(); // Hide the current form if needed
                 }
                 else
                 {
@@ -101,6 +101,7 @@ namespace snaprint_try4
             }
         }
 
+        /*
         private void CheckPrinterStatus()
         {
             try
@@ -174,8 +175,9 @@ namespace snaprint_try4
             {
                 Console.WriteLine("An error occurred while querying WMI: " + e.Message);
             }
-        } 
-    }
+        }  */
+    } 
+        
 
 
 

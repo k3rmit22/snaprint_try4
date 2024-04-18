@@ -16,6 +16,7 @@ namespace snaprint_try4
         private string selectedFileName;
         private string selectedFilePath;
         private byte[] pdfData;
+        private string preferredPrinter;
 
 
         private double selectedPrice = 0;
@@ -32,6 +33,8 @@ namespace snaprint_try4
             SetDoubleBuffered();
 
             PopulateCopyComboBox();
+            //  PopulatePrinterComboBox();
+            PopulatePaperSizeComboBox();
 
 
             // Set the selected file name
@@ -129,9 +132,22 @@ namespace snaprint_try4
                     e.Handled = true;
             };
         }
-
         
-      
+        //get paper size 
+        private void PopulatePaperSizeComboBox()
+        {
+            // Clear existing items (if any)
+            comboBoxPaperSize.Items.Clear();
+
+            // Add paper size options to the ComboBox
+            comboBoxPaperSize.Items.AddRange(new object[] { "Short", "Long" });
+
+            // Select the first option ("A4") by default
+            comboBoxPaperSize.SelectedIndex = 0;
+        }
+        
+        
+
 
 
         //back button
@@ -139,7 +155,7 @@ namespace snaprint_try4
         {
             file_explorer prev = new file_explorer();
             prev.Show();
-            this.Hide();
+            this.Close();
         }
 
         // fir flickering forms
@@ -247,6 +263,10 @@ namespace snaprint_try4
              }
          } */
 
+
+        //setting printer to greyscale don't know if the code works here 
+        /*
+
         private void combocolor_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -285,7 +305,7 @@ namespace snaprint_try4
                 MessageBox.Show($"An error occurred while retrieving the selected price: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        
         private void SetPrinterSettingsToGreyscale()
         {
             // Create a PrintDocument instance
@@ -316,7 +336,7 @@ namespace snaprint_try4
             printDocument.PrinterSettings.PrinterName = defaultPrinterName;
         }
 
-
+        */
 
 
         // Method to compute the total price
@@ -351,6 +371,7 @@ namespace snaprint_try4
             }
         }
 
+         
 
 
 
@@ -358,12 +379,14 @@ namespace snaprint_try4
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             // Check if all combo boxes have a selected item
-            if (combosize.SelectedItem != null && combocopies.SelectedItem != null && combocolor.SelectedItem != null && pdfData != null && pdfData.Length > 0)
+            if (comboBoxPaperSize.SelectedItem != null && combocopies.SelectedItem != null && combocolor.SelectedItem != null && pdfData != null && pdfData.Length > 0)
             {
                 // Get user selections
-                string paperSize = combosize.SelectedItem.ToString();
+              //  string paperSize = combosize.SelectedItem.ToString();
                 string copies = combocopies.SelectedItem.ToString();
                 string selectedFileName = filename.Text; // Assuming filename is the name of the textbox
+               // string selectedPrinter = comboBoxPaperSize.SelectedItem.ToString();
+                string selectedPaperSize = comboBoxPaperSize.SelectedItem.ToString();
 
                 // Get the selected PriceColorItem from the combocolor
                 PriceColorItem selectedPriceColorItem = combocolor.SelectedItem as PriceColorItem;
@@ -381,23 +404,26 @@ namespace snaprint_try4
 
                 string printingOption = selectedPriceColorItem.Color.Equals("black", StringComparison.OrdinalIgnoreCase) ? "Black" : "Colored";
 
-                ApplyPrinterSettings(printingOption);
+                //ApplyPrinterSettings(printingOption);
 
 
                 // Print debug messages
                 Console.WriteLine("Selected PDF file received successfully:");
                 Console.WriteLine($"  File Name: {selectedFileName}");
-                Console.WriteLine($"  Paper Size: {paperSize}");
+                //Console.WriteLine($"  Paper Size: {paperSize}");
                 Console.WriteLine($"  Copies: {copies}");
                 Console.WriteLine($"  Color: {selectedPriceColorItem.Color}");
                 Console.WriteLine($"  Number of pages in the PDF: {GetNumberOfPages(pdfData)}");
                 Console.WriteLine($"  Total Price: {totalPrice}");
                 Console.WriteLine($"  Preferred Printing Option: {printingOption}");
+                //Console.WriteLine($" Selected Printer:  {selectedPrinter}");
+                Console.WriteLine($"Selected Paper Size: {selectedPaperSize}");
+
 
                 // Proceed to the next step or form
-                Form nextForm = new summary(selectedFileName, copies, selectedPriceColorItem.Color, paperSize, pdfData, totalPrice, printingOption);
+                Form nextForm = new summary(selectedFileName, copies, selectedPriceColorItem.Color, selectedPaperSize, pdfData, totalPrice, printingOption);
                 nextForm.Show();
-                this.Hide();
+                this.Close();
             }
             else
             {
@@ -405,6 +431,10 @@ namespace snaprint_try4
                 MessageBox.Show("Please select options for all fields and make sure a PDF file is loaded.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+
+        /*
 
         // Method to apply printer settings based on the selected color
         private void ApplyPrinterSettings(string printingOption)
@@ -422,7 +452,7 @@ namespace snaprint_try4
                 MessageBox.Show("Invalid color selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        */
 
 
 
