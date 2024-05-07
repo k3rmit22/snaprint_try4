@@ -39,15 +39,17 @@ namespace snaprint_try4
 
             // Set the selected file name
             this.selectedFileName = selectedFileName;
+            Console.WriteLine($"  File Name: {selectedFileName}");
 
             // Display the selected file name in the filename TextBox
             filename.Text = selectedFilePath;
             this.selectedFileName = selectedFileName;
+            Console.WriteLine($"  File Name: {selectedFileName}");
             this.pdfData = pdfData;
         }
 
         //diplaying in combobox
-     
+
         public class PriceColorItem
         {
             public double Price { get; set; }
@@ -108,6 +110,7 @@ namespace snaprint_try4
         public preferences(string selectedFileName, byte[] pdfData)
         {
             this.selectedFileName = selectedFileName;
+            Console.WriteLine($"  File Name: {selectedFileName}");
             this.pdfData = pdfData;
         }
 
@@ -132,7 +135,7 @@ namespace snaprint_try4
                     e.Handled = true;
             };
         }
-        
+
         //get paper size 
         private void PopulatePaperSizeComboBox()
         {
@@ -145,8 +148,8 @@ namespace snaprint_try4
             // Select the first option ("A4") by default
             comboBoxPaperSize.SelectedIndex = 0;
         }
-        
-        
+
+
 
 
 
@@ -371,7 +374,7 @@ namespace snaprint_try4
             }
         }
 
-         
+
 
 
 
@@ -382,10 +385,12 @@ namespace snaprint_try4
             if (comboBoxPaperSize.SelectedItem != null && combocopies.SelectedItem != null && combocolor.SelectedItem != null && pdfData != null && pdfData.Length > 0)
             {
                 // Get user selections
-              //  string paperSize = combosize.SelectedItem.ToString();
+                //  string paperSize = combosize.SelectedItem.ToString();
                 string copies = combocopies.SelectedItem.ToString();
-                string selectedFileName = filename.Text; // Assuming filename is the name of the textbox
-               // string selectedPrinter = comboBoxPaperSize.SelectedItem.ToString();
+                string selectedFilepath = filename.Text; //eto yon
+               // string Filenam = selectedFileName;
+                Console.WriteLine($"  File Name: {selectedFileName}");
+
                 string selectedPaperSize = comboBoxPaperSize.SelectedItem.ToString();
 
                 // Get the selected PriceColorItem from the combocolor
@@ -409,56 +414,83 @@ namespace snaprint_try4
 
                 // Print debug messages
                 Console.WriteLine("Selected PDF file received successfully:");
+                Console.WriteLine($" File Path:{selectedFilepath} ");
                 Console.WriteLine($"  File Name: {selectedFileName}");
                 //Console.WriteLine($"  Paper Size: {paperSize}");
-                Console.WriteLine($"  Copies: {copies}");
+
                 Console.WriteLine($"  Color: {selectedPriceColorItem.Color}");
+                Console.WriteLine($"  Copies: {copies}");
                 Console.WriteLine($"  Number of pages in the PDF: {GetNumberOfPages(pdfData)}");
                 Console.WriteLine($"  Total Price: {totalPrice}");
                 Console.WriteLine($"  Preferred Printing Option: {printingOption}");
-                //Console.WriteLine($" Selected Printer:  {selectedPrinter}");
                 Console.WriteLine($"Selected Paper Size: {selectedPaperSize}");
 
+                //send data to database 
 
-                // Proceed to the next step or form
-                Form nextForm = new summary(selectedFileName, copies, selectedPriceColorItem.Color, selectedPaperSize, pdfData, totalPrice, printingOption);
-                nextForm.Show();
-                this.Close();
+                //database connection 
+                string connectionString = "Server=localhost;Port=3306;Database=admin_user;Uid=root;Pwd=;";
+                if (comboBoxPaperSize.SelectedItem != null && combocopies.SelectedItem != null && combocolor.SelectedItem != null && pdfData != null && pdfData.Length > 0)
+                {
+                    try
+                    {
+                       
+                        using (MySqlConnection connection = new MySqlConnection(connectionString))
+                        {
+                            connection.Open();
+
+                          
+                            string sql = "INSERT INTO tbl_income (File_Name, datetime, COLOR_OF_PAPER, NUMBER_OF_COPIES, TOTAL_AMOUNT ) VALUES (@selectedFileName, NOW(), @color, @copies, @totalPrice)";
+
+                            
+                            using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                            {
+                                // Add parameters to the command
+                                cmd.Parameters.AddWithValue("@selectedFileName", selectedFileName);
+                                Console.WriteLine($"  File Name: {selectedFileName}");
+
+                                cmd.Parameters.AddWithValue("@color", selectedPriceColorItem.Color);
+                                cmd.Parameters.AddWithValue("@copies", copies);
+                                cmd.Parameters.AddWithValue("@totalPrice", totalPrice);
+                                
+
+                                
+                                cmd.ExecuteNonQuery();
+                            }
+
+                            Console.WriteLine("Data inserted successfully.");
+                        }
+
+
+
+                        // Proceed to the next step or form
+                        Form nextForm = new summary(selectedFileName, selectedFilepath, copies, selectedPriceColorItem.Color, selectedPaperSize, pdfData, totalPrice, printingOption);
+                        nextForm.Show();
+                        this.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Display an error message if an exception occurs
+                        MessageBox.Show($"An error occurred while inserting data into the database: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                else
+                {
+                    // Display a message indicating that all selections are required
+                    MessageBox.Show("Please select options for all fields and make sure a PDF file is loaded.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
-            {
-                // Display a message indicating that all selections are required
-                MessageBox.Show("Please select options for all fields and make sure a PDF file is loaded.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+
+
+
+
+
+
+
+
         }
-
-
-
-        /*
-
-        // Method to apply printer settings based on the selected color
-        private void ApplyPrinterSettings(string printingOption)
-        {
-            if (printingOption.Equals("Black", StringComparison.OrdinalIgnoreCase))
-            {
-                SetPrinterSettingsToGreyscale();
-            }
-            else if (printingOption.Equals("Colored", StringComparison.OrdinalIgnoreCase))
-            {
-                SetPrinterSettingsToColored();
-            }
-            else
-            {
-                MessageBox.Show("Invalid color selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        */
-
-
 
 
     }
-
-
 }
 

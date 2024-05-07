@@ -22,13 +22,14 @@ namespace snaprint_try4
     {
         MySqlConnection conn = new MySqlConnection("Server=localhost;Port=3306;Database=admin_user;Uid=root;Pwd=;");
         private string printingOption;
-        private string selectedFileName; //display file
+        private string selectedFileName;
+        private string selectedFilepath; //display file
 
         private string selectedCopies;
         private string selectedColor;
         private string selectedPaperSize;
         private byte[] pdfData; // Store the PDF file data here
-        private string selectedFilePath;
+        //private string selectedFilePath;
         
 
 
@@ -41,7 +42,7 @@ namespace snaprint_try4
 
         SerialPort serialPort = new SerialPort();
 
-        public summary(string selectedFileName, string copies, string color, string selectedPaperSize, byte[] pdfData, double totalPrice, string printingOption)
+        public summary(string selectedFileName, string selectedFilepath, string copies, string color, string selectedPaperSize, byte[] pdfData, double totalPrice, string printingOption)
         {
             InitializeComponent();
             InitializeKioskMode();
@@ -57,11 +58,11 @@ namespace snaprint_try4
             // Send the total price to the Arduino
             //SendTotalPriceToESP32(totalPrice);
 
-
+            this.selectedFileName = selectedFileName;
             this.selectedCopies = copies;
             this.selectedColor = color;
             this.selectedPaperSize = selectedPaperSize;
-            this.selectedFileName = selectedFileName; // Assign parameter value to the field
+            this.selectedFilepath = selectedFilepath; // Assign parameter value to the field
             this.totalPrice = totalPrice;
             this.printingOption = printingOption;
           //  this.selectedPrinter = selectedPrinter; // get selected printer
@@ -73,7 +74,7 @@ namespace snaprint_try4
             labelCopies.Text = copies;
             labelColor.Text = color;
             labelPaperSize.Text = selectedPaperSize;
-            filename.Text = selectedFileName;
+            filename.Text = selectedFilepath;
             lblTotalPrice.Text = $"Total Price: ₱{totalPrice:N2}";
 
             // Store the PDF file data
@@ -86,7 +87,8 @@ namespace snaprint_try4
         private void summary_Load(object sender, EventArgs e)
         {
             SendTotalPriceToESP32(totalPrice);
-            
+            serialPort.DiscardInBuffer();
+
         }
 
 
@@ -220,6 +222,8 @@ namespace snaprint_try4
 
                 // Display the received string in the console
                 Console.WriteLine("Received data from ESP32: " + receivedDataStr);
+                // Send the balance to the SQL database
+               
 
                 // Convert the string to a double
                 if (double.TryParse(receivedDataStr, out double balance))
@@ -234,13 +238,16 @@ namespace snaprint_try4
                         try
                         {
                             // Reset the balance
-                            balance = 0;
-                            Console.WriteLine("Balance reset to zero.");
-                            UpdateBalance("Payment success!!");
+                            //balance = 0;
+                            //Console.WriteLine("Balance reset to zero.");
+                            //UpdateBalance("Payment success!!");
                             //UpdateBalance("0.00"); // Update UI with zero balance
-
+                            
+                            // Send the balance to the SQL database
+                            UpdateBalanceInDatabase(balance); 
+                            
                             // Discard any remaining data in the serial port's input buffer
-                            serialPort.DiscardInBuffer();
+                            // serialPort.DiscardInBuffer();
 
                             // Call the method to print the document
                             try
@@ -313,6 +320,55 @@ namespace snaprint_try4
                     }
                 }
         */
+
+        //code for sending balance to database 
+        
+        private void UpdateBalanceInDatabase(double balance)
+        {
+            // Database connection parameters
+            string connectionString = "Server=localhost;Port=3306;Database=admin_user;Uid=root;Pwd=;";
+
+            // SQL command to update the balance in the database
+            string updateCommandText = "UPDATE tbl_income SET inserted_amount = @balance WHERE Id = @id";
+
+            // Example Id
+            int latestId;
+
+            // Create and open connection
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Get the latest ID from the database
+                string getMaxIdQuery = "SELECT MAX(Id) FROM tbl_income";
+                using (MySqlCommand getMaxIdCommand = new MySqlCommand(getMaxIdQuery, connection))
+                {
+                    latestId = Convert.ToInt32(getMaxIdCommand.ExecuteScalar());
+                }
+
+                // Create command
+                using (MySqlCommand command = new MySqlCommand(updateCommandText, connection))
+                {
+                    // Add parameters
+                    command.Parameters.AddWithValue("@balance", balance);
+                    command.Parameters.AddWithValue("@id", latestId);
+
+                    // Execute command
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    // Check if rows were affected
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("Balance updated successfully in the database.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No rows updated in the database.");
+                    }
+                }
+            }
+        }
+        
 
         private void PrintDocument()
         {
@@ -560,47 +616,12 @@ namespace snaprint_try4
 
         private void button1_Click(object sender, EventArgs e)
         {
-            preferences back = new preferences(selectedFileName, selectedFilePath, pdfData);
+            preferences back = new preferences(selectedFileName, selectedFilepath, pdfData);
             back.Show();
             this.Close();
         }
 
-
-        private bool ValidatePdfData(byte[] pdfData)
-        {
-            // Check for null or empty data
-            if (pdfData == null || pdfData.Length == 0)
-            {
-                MessageBox.Show("PDF data is empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            // Check for PDF file signature ("%PDF-")
-            if (!IsPdfFile(pdfData))
-            {
-                MessageBox.Show("Invalid PDF file format.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            MessageBox.Show("PDF data is valid.", "Validation Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            return true;
-        }
-
-        private bool IsPdfFile(byte[] data)
-        {
-            // Check if the first few bytes match the PDF file signature ("%PDF-")
-            if (data.Length >= 5 &&
-                data[0] == 0x25 &&  // '%'
-                data[1] == 0x50 &&  // 'P'
-                data[2] == 0x44 &&  // 'D'
-                data[3] == 0x46 &&  // 'F'
-                data[4] == 0x2D)    // '-'
-            {
-                return true;
-            }
-            return false;
-        }
-
+      
 
 
         protected override CreateParams CreateParams

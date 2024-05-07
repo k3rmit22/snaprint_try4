@@ -145,6 +145,7 @@ namespace snaprint_try4
                 {
                     // Get the name of the selected PDF file
                     string selectedFileName = listView1.SelectedItems[0].Text;
+                    
 
                     // Get the full path of the selected PDF file
                     string selectedFilePath = Path.Combine(filePath, selectedFileName);
@@ -160,6 +161,7 @@ namespace snaprint_try4
                     {
                         // Create an instance of the preferences form and pass the selected PDF file data
                         preferences show = new preferences(selectedFileName, selectedFilePath, pdfData);
+                        Console.WriteLine($"  File Name: {selectedFileName}");
 
                         // Show the preferences form
                         show.Show();
