@@ -175,7 +175,7 @@ public class ReportDialog : Form
             // 
             // ReportDialog
             // 
-            this.ClientSize = new System.Drawing.Size(282, 253);
+            this.ClientSize = new System.Drawing.Size(408, 364);
             this.Name = "ReportDialog";
             this.ResumeLayout(false);
 

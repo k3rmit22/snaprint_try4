@@ -45,9 +45,18 @@ namespace snaprint_try4
             this.Location = new Point(this.Left + 220, this.Top + 150); // Adjust for animation
         }
 
-        private void close_icon_Click(object sender, EventArgs e)
+       
+
+        private void close_button_Click(object sender, EventArgs e)
         {
             this.Close();
+
         }
+
+
+
+
+
+
     }
 }

@@ -368,6 +368,7 @@
     <Compile Include="browse.Designer.cs">
       <DependentUpon>browse.cs</DependentUpon>
     </Compile>
+    <Compile Include="Class1.cs" />
     <Compile Include="EjectPendriveManager.cs" />
     <Compile Include="file_explorer.cs">
       <SubType>Form</SubType>
