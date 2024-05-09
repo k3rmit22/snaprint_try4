@@ -383,6 +383,18 @@
     <Compile Include="loading.Designer.cs">
       <DependentUpon>loading.cs</DependentUpon>
     </Compile>
+    <Compile Include="modal2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modal2.Designer.cs">
+      <DependentUpon>modal2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modal3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modal3.Designer.cs">
+      <DependentUpon>modal3.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReportDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -420,6 +432,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="loading.resx">
       <DependentUpon>loading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modal2.resx">
+      <DependentUpon>modal2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modal3.resx">
+      <DependentUpon>modal3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportDialog.resx">
       <DependentUpon>ReportDialog.cs</DependentUpon>

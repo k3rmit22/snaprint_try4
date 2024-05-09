@@ -34,7 +34,6 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.ReportIssueButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.filename = new System.Windows.Forms.Label();
             this.lblTotalPrice = new System.Windows.Forms.Label();
@@ -48,6 +47,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.labelpaper23 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -88,7 +88,7 @@
             // panel5
             // 
             this.panel5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel5.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.panel5.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel5.Location = new System.Drawing.Point(923, 3);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(3, 390);
@@ -111,21 +111,11 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel2.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.panel2.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel2.Location = new System.Drawing.Point(-2, -7);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(930, 10);
             this.panel2.TabIndex = 18;
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel1.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.panel1.Location = new System.Drawing.Point(687, 133);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(3, 392);
-            this.panel1.TabIndex = 17;
             // 
             // pictureBox3
             // 
@@ -281,6 +271,15 @@
             this.labelpaper23.TabIndex = 1;
             this.labelpaper23.Text = "Paper Size:";
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel1.Location = new System.Drawing.Point(687, 133);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(3, 392);
+            this.panel1.TabIndex = 17;
+            // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -326,7 +325,7 @@
             // panel3
             // 
             this.panel3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel3.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.panel3.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel3.Location = new System.Drawing.Point(67, 522);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(926, 3);
@@ -335,7 +334,7 @@
             // panel4
             // 
             this.panel4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel4.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.panel4.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel4.Location = new System.Drawing.Point(66, 136);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(3, 390);
@@ -345,7 +344,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Lavender;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1068, 622);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);

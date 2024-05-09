@@ -147,7 +147,7 @@ namespace snaprint_try4
 
         private void modal_Click(object sender, EventArgs e)
         {
-            Form modalBackgound = new Form();
+           /* Form modalBackgound = new Form();
             using (modal modal = new modal())
             {
                 modalBackgound.StartPosition= FormStartPosition.Manual;
@@ -165,7 +165,9 @@ namespace snaprint_try4
 
                 modal.ShowDialog();
                 modalBackgound.Dispose();
-            }
+            }*/
+            modal next = new modal();
+            next.Show();
         }
         protected override CreateParams CreateParams
         {

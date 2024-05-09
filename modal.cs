@@ -15,6 +15,8 @@ namespace snaprint_try4
         public modal()
         {
             InitializeComponent();
+            InitializeKioskMode();
+
         }
 
         private void modalEffect_Timer_Tick(object sender, EventArgs e)
@@ -53,10 +55,27 @@ namespace snaprint_try4
 
         }
 
+        private void InitializeKioskMode()
+        {
+            // Set the form to cover the entire screen
+            this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = FormBorderStyle.None;
 
+            // Disable Alt+F4 to prevent closing the application
+            this.KeyPreview = true;
+            this.KeyDown += (s, e) =>
+            {
+                if (e.Alt && e.KeyCode == Keys.F4)
+                    e.Handled = true;
+            };
+        }
 
-
-
-
+        private void button_next_Click(object sender, EventArgs e)
+        {
+            modal2 next = new modal2();
+            next.Show();
+            this.Close();
+           
+        }
     }
 }
