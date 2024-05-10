@@ -10,63 +10,13 @@ using System.Windows.Forms;
 
 namespace snaprint_try4
 {
-    public partial class modal3 : Form
+    public partial class modal4 : Form
     {
-        public modal3()
+        public modal4()
         {
             InitializeComponent();
             InitializeKioskMode();
             SetDoubleBuffered();
-        }
-
-        private void close_button_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void button_next_Click(object sender, EventArgs e)
-        {
-            modal4 next= new modal4();
-            next.Show();
-            this.Close();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            modal2 prev = new modal2();
-            prev.Show();
-            this.Close();
-        }
-
-        private void modalEffect_Timer_Tick(object sender, EventArgs e)
-        {
-            if (Opacity >= 1 && this.Top >= i)
-            {
-                modalEffect_Timer.Stop(); // Stop the timer when animation is complete
-            }
-            else
-            {
-                Opacity += 0.08; // Increase opacity gradually for fade-in effect
-                this.Top += 20; // Move the form downwards for animation
-
-                // Center the modal both horizontally and vertically
-                this.CenterToScreen();
-            }
-        }
-        int i;
-        private void modal3_Load(object sender, EventArgs e)
-        {
-
-            // Adjust initial position for animation
-            this.Location = new Point(this.Left, this.Top - 200); // Move the form up by 200 pixels
-            this.Opacity = 0; // Set initial opacity to 0 for a fade-in effect
-
-            // Set a shorter interval for the timer to make the animation appear faster
-            modalEffect_Timer.Interval = 20; // Adjust this value as needed
-
-            // Start the timer for animation
-            modalEffect_Timer.Start();
-
         }
         private void InitializeKioskMode()
         {
@@ -86,6 +36,58 @@ namespace snaprint_try4
         {
             // Enable double buffering for this form
             this.DoubleBuffered = true;
+        }
+    
+
+    private void close_button_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button_next_Click(object sender, EventArgs e)
+        {
+            modal5 next= new modal5();
+            next.Show();
+            this.Close();
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            modal3 prev= new modal3();
+            prev.Show();
+            this.Close();
+        }
+
+        private void modalEffect_Timer_Tick(object sender, EventArgs e)
+        {
+            if (Opacity >= 1 && this.Top >= i)
+            {
+                modalEffect_Timer.Stop(); // Stop the timer when animation is complete
+            }
+            else
+            {
+                Opacity += 0.08; // Increase opacity gradually for fade-in effect
+                this.Top += 20; // Move the form downwards for animation
+
+                // Center the modal both horizontally and vertically
+                this.CenterToScreen();
+            }
+        }
+
+        int i;
+        private void modal4_Load(object sender, EventArgs e)
+        {
+
+            // Adjust initial position for animation
+            this.Location = new Point(this.Left, this.Top - 200); // Move the form up by 200 pixels
+            this.Opacity = 0; // Set initial opacity to 0 for a fade-in effect
+
+            // Set a shorter interval for the timer to make the animation appear faster
+            modalEffect_Timer.Interval = 20; // Adjust this value as needed
+
+            // Start the timer for animation
+            modalEffect_Timer.Start();
         }
     }
 }

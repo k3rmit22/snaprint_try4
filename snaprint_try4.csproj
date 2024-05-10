@@ -383,6 +383,12 @@
     <Compile Include="loading.Designer.cs">
       <DependentUpon>loading.cs</DependentUpon>
     </Compile>
+    <Compile Include="modal10.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modal10.Designer.cs">
+      <DependentUpon>modal10.cs</DependentUpon>
+    </Compile>
     <Compile Include="modal2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -394,6 +400,42 @@
     </Compile>
     <Compile Include="modal3.Designer.cs">
       <DependentUpon>modal3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modal4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modal4.Designer.cs">
+      <DependentUpon>modal4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modal5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modal5.Designer.cs">
+      <DependentUpon>modal5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modal6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modal6.Designer.cs">
+      <DependentUpon>modal6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modal7.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modal7.Designer.cs">
+      <DependentUpon>modal7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modal8.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modal8.Designer.cs">
+      <DependentUpon>modal8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modal9.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modal9.Designer.cs">
+      <DependentUpon>modal9.cs</DependentUpon>
     </Compile>
     <Compile Include="ReportDialog.cs">
       <SubType>Form</SubType>
@@ -433,11 +475,32 @@
     <EmbeddedResource Include="loading.resx">
       <DependentUpon>loading.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modal10.resx">
+      <DependentUpon>modal10.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modal2.resx">
       <DependentUpon>modal2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modal3.resx">
       <DependentUpon>modal3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modal4.resx">
+      <DependentUpon>modal4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modal5.resx">
+      <DependentUpon>modal5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modal6.resx">
+      <DependentUpon>modal6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modal7.resx">
+      <DependentUpon>modal7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modal8.resx">
+      <DependentUpon>modal8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modal9.resx">
+      <DependentUpon>modal9.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportDialog.resx">
       <DependentUpon>ReportDialog.cs</DependentUpon>
