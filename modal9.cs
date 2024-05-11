@@ -73,7 +73,7 @@ namespace snaprint_try4
 
         private void button_next_Click(object sender, EventArgs e)
         {
-            modal next = new modal();
+            modal10 next = new modal10();
             next.Show();
             this.Close();
         }

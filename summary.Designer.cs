@@ -81,9 +81,9 @@
             this.groupBox1.Controls.Add(this.labelpaper23);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Location = new System.Drawing.Point(89, 164);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(1235, 482);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
@@ -93,7 +93,7 @@
             this.panel5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel5.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel5.Location = new System.Drawing.Point(1231, 4);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(4, 480);
             this.panel5.TabIndex = 19;
@@ -107,18 +107,19 @@
             this.ReportIssueButton.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReportIssueButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ReportIssueButton.Location = new System.Drawing.Point(24, 382);
-            this.ReportIssueButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ReportIssueButton.Margin = new System.Windows.Forms.Padding(4);
             this.ReportIssueButton.Name = "ReportIssueButton";
             this.ReportIssueButton.Size = new System.Drawing.Size(183, 68);
             this.ReportIssueButton.TabIndex = 15;
             this.ReportIssueButton.Text = "Report a Problem";
             this.ReportIssueButton.UseVisualStyleBackColor = false;
+            this.ReportIssueButton.Click += new System.EventHandler(this.ReportIssueButton_Click_1);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel2.Location = new System.Drawing.Point(-3, -9);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1240, 12);
             this.panel2.TabIndex = 18;
@@ -129,7 +130,7 @@
             this.pictureBox3.BackColor = System.Drawing.Color.White;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = new System.Drawing.Point(893, 38);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(284, 249);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -186,9 +187,9 @@
             this.groupBox4.Font = new System.Drawing.Font("Bookman Old Style", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.DarkRed;
             this.groupBox4.Location = new System.Drawing.Point(19, 266);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox4.Size = new System.Drawing.Size(776, 96);
             this.groupBox4.TabIndex = 11;
             this.groupBox4.TabStop = false;
@@ -294,7 +295,7 @@
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel1.Location = new System.Drawing.Point(916, 164);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(4, 482);
             this.panel1.TabIndex = 17;
@@ -308,7 +309,7 @@
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(36, 654);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(123, 97);
             this.button1.TabIndex = 12;
@@ -324,7 +325,7 @@
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Location = new System.Drawing.Point(1265, 654);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(123, 97);
             this.button2.TabIndex = 13;
@@ -337,7 +338,7 @@
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(357, 5);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(716, 143);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -349,7 +350,7 @@
             this.panel3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel3.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel3.Location = new System.Drawing.Point(89, 642);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1235, 4);
             this.panel3.TabIndex = 19;
@@ -359,7 +360,7 @@
             this.panel4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel4.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel4.Location = new System.Drawing.Point(88, 167);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(4, 480);
             this.panel4.TabIndex = 18;
@@ -378,7 +379,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "summary";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";

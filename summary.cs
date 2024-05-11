@@ -660,7 +660,31 @@ namespace snaprint_try4
             }
         }
 
-      
+        private void ReportIssueButton_Click_1(object sender, EventArgs e)
+        {
+            // Show the report dialog
+            using (ReportDialog dialog = new ReportDialog())
+            {
+                // Display the dialog box
+                dialog.ShowDialog();
+
+                // After the dialog is closed, you can access the report text from dialog.textBox.Text
+                string report = dialog.textBox.Text;
+
+                // You can then process the report text as needed
+                if (!string.IsNullOrEmpty(report))
+                {
+                    // Here you can send the report to your database or perform any other necessary action
+                    MessageBox.Show("Report submitted successfully: " + report, "Report Submitted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("No report submitted.", "No Report", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+
+
+        }
     }
 
 
