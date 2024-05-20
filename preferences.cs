@@ -378,7 +378,7 @@ namespace snaprint_try4
 
 
 
-
+        /*
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             // Check if all combo boxes have a selected item
@@ -489,8 +489,124 @@ namespace snaprint_try4
 
 
         }
+        */
+
+        private void next_btn_Click(object sender, EventArgs e)
+        {
+            // Check if all combo boxes have a selected item
+            if (comboBoxPaperSize.SelectedItem != null && combocopies.SelectedItem != null && combocolor.SelectedItem != null && pdfData != null && pdfData.Length > 0)
+            {
+                // Get user selections
+                //  string paperSize = combosize.SelectedItem.ToString();
+                string copies = combocopies.SelectedItem.ToString();
+                string selectedFilepath = filename.Text; //eto yon
+                                                         // string Filenam = selectedFileName;
+                Console.WriteLine($"  File Name: {selectedFileName}");
+
+                string selectedPaperSize = comboBoxPaperSize.SelectedItem.ToString();
+
+                // Get the selected PriceColorItem from the combocolor
+                PriceColorItem selectedPriceColorItem = combocolor.SelectedItem as PriceColorItem;
+                if (selectedPriceColorItem == null)
+                {
+                    MessageBox.Show("Please select a color.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Get the price per color from the selected PriceColorItem
+                double pricePerColor = selectedPriceColorItem.Price;
+
+                // Calculate total price
+                double totalPrice = ComputeTotalPrice(pricePerColor, copies, pdfData);
+
+                string printingOption = selectedPriceColorItem.Color.Equals("black", StringComparison.OrdinalIgnoreCase) ? "Black" : "Colored";
+
+                //ApplyPrinterSettings(printingOption);
 
 
+                // Print debug messages
+                Console.WriteLine("Selected PDF file received successfully:");
+                Console.WriteLine($" File Path:{selectedFilepath} ");
+                Console.WriteLine($"  File Name: {selectedFileName}");
+                //Console.WriteLine($"  Paper Size: {paperSize}");
+
+                Console.WriteLine($"  Color: {selectedPriceColorItem.Color}");
+                Console.WriteLine($"  Copies: {copies}");
+                Console.WriteLine($"  Number of pages in the PDF: {GetNumberOfPages(pdfData)}");
+                Console.WriteLine($"  Total Price: {totalPrice}");
+                Console.WriteLine($"  Preferred Printing Option: {printingOption}");
+                Console.WriteLine($"Selected Paper Size: {selectedPaperSize}");
+
+                //send data to database 
+
+                //database connection 
+                string connectionString = "Server=localhost;Port=3306;Database=admin_user;Uid=root;Pwd=;";
+                if (comboBoxPaperSize.SelectedItem != null && combocopies.SelectedItem != null && combocolor.SelectedItem != null && pdfData != null && pdfData.Length > 0)
+                {
+                    try
+                    {
+
+                        using (MySqlConnection connection = new MySqlConnection(connectionString))
+                        {
+                            connection.Open();
+
+
+                            string sql = "INSERT INTO tbl_income (File_Name, datetime, COLOR_OF_PAPER, NUMBER_OF_COPIES, TOTAL_AMOUNT ) VALUES (@selectedFileName, NOW(), @color, @copies, @totalPrice)";
+
+
+                            using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+                            {
+                                // Add parameters to the command
+                                cmd.Parameters.AddWithValue("@selectedFileName", selectedFileName);
+                                Console.WriteLine($"  File Name: {selectedFileName}");
+
+                                cmd.Parameters.AddWithValue("@color", selectedPriceColorItem.Color);
+                                cmd.Parameters.AddWithValue("@copies", copies);
+                                cmd.Parameters.AddWithValue("@totalPrice", totalPrice);
+
+
+
+                                cmd.ExecuteNonQuery();
+                            }
+
+                            Console.WriteLine("Data inserted successfully.");
+                        }
+
+
+
+                        // Proceed to the next step or form
+                        Form nextForm = new summary(selectedFileName, selectedFilepath, copies, selectedPriceColorItem.Color, selectedPaperSize, pdfData, totalPrice, printingOption);
+                        nextForm.Show();
+                        this.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Display an error message if an exception occurs
+                        MessageBox.Show($"An error occurred while inserting data into the database: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                else
+                {
+                    // Display a message indicating that all selections are required
+                    MessageBox.Show("Please select options for all fields and make sure a PDF file is loaded.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            file_explorer prev = new file_explorer();
+            prev.Show();
+            this.Close();
+        }
+
+        private void modal_Click(object sender, EventArgs e)
+        {
+            modal5 show = new modal5();
+            show.Show();
+        }
     }
 }
 

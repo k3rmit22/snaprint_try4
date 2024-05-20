@@ -34,7 +34,6 @@
             this.manualpic = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.close_button = new System.Windows.Forms.Button();
-            this.button_next = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.manualpic)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,28 +81,12 @@
             this.close_button.UseVisualStyleBackColor = false;
             this.close_button.Click += new System.EventHandler(this.close_button_Click);
             // 
-            // button_next
-            // 
-            this.button_next.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button_next.BackColor = System.Drawing.Color.Transparent;
-            this.button_next.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_next.BackgroundImage")));
-            this.button_next.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button_next.FlatAppearance.BorderSize = 0;
-            this.button_next.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_next.Location = new System.Drawing.Point(1060, 342);
-            this.button_next.Name = "button_next";
-            this.button_next.Size = new System.Drawing.Size(92, 79);
-            this.button_next.TabIndex = 17;
-            this.button_next.UseVisualStyleBackColor = false;
-            this.button_next.Click += new System.EventHandler(this.button_next_Click);
-            // 
             // modal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1193, 717);
-            this.Controls.Add(this.button_next);
             this.Controls.Add(this.close_button);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.manualpic);
@@ -124,6 +107,5 @@
         private System.Windows.Forms.PictureBox manualpic;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button close_button;
-        private System.Windows.Forms.Button button_next;
     }
 }

@@ -117,15 +117,16 @@ namespace snaprint_try4
         {
         }
 
-        private bool isBlack = true;
+        /*
+        private bool isLightBlue = true;
         private Random rand = new Random();
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            // Toggle between black and white
-            if (isBlack)
+            // Toggle between light blue and white
+            if (isLightBlue)
             {
-                INSERT.ForeColor = Color.Black;
+                INSERT.ForeColor = Color.LightBlue;
             }
             else
             {
@@ -133,13 +134,13 @@ namespace snaprint_try4
             }
 
             // Toggle the state for the next tick
-            isBlack = !isBlack;
+            isLightBlue = !isLightBlue;
 
             // Adjust the timer interval for a slower blinking rate
             timer1.Interval = 1000; // Change this value as needed for desired blinking speed
         }
 
-        
+        */
 
 
         public static int parentX, parentY;

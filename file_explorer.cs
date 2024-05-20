@@ -270,6 +270,10 @@ namespace snaprint_try4
             }
         }
 
-       
+        private void modal_Click(object sender, EventArgs e)
+        {
+            modal3 show =new modal3();
+            show.Show();
+        }
     }
 }

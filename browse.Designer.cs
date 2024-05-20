@@ -34,7 +34,11 @@
             this.ejectbutton = new System.Windows.Forms.Button();
             this.browse_button = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.modal = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modal)).BeginInit();
             this.SuspendLayout();
             // 
             // label_browse
@@ -42,11 +46,11 @@
             this.label_browse.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label_browse.AutoSize = true;
             this.label_browse.BackColor = System.Drawing.Color.Transparent;
-            this.label_browse.Font = new System.Drawing.Font("Bookman Old Style", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_browse.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_browse.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label_browse.Location = new System.Drawing.Point(633, 477);
+            this.label_browse.Location = new System.Drawing.Point(664, 477);
             this.label_browse.Name = "label_browse";
-            this.label_browse.Size = new System.Drawing.Size(317, 32);
+            this.label_browse.Size = new System.Drawing.Size(279, 32);
             this.label_browse.TabIndex = 2;
             this.label_browse.Text = "Browse Your PDF File";
             this.label_browse.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -56,11 +60,11 @@
             this.labeleject.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labeleject.AutoSize = true;
             this.labeleject.BackColor = System.Drawing.Color.Transparent;
-            this.labeleject.Font = new System.Drawing.Font("Bookman Old Style", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labeleject.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labeleject.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labeleject.Location = new System.Drawing.Point(106, 477);
+            this.labeleject.Location = new System.Drawing.Point(119, 477);
             this.labeleject.Name = "labeleject";
-            this.labeleject.Size = new System.Drawing.Size(242, 32);
+            this.labeleject.Size = new System.Drawing.Size(218, 32);
             this.labeleject.TabIndex = 5;
             this.labeleject.Text = "Eject flash drive";
             this.labeleject.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -100,12 +104,49 @@
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-1, -1);
+            this.pictureBox1.Location = new System.Drawing.Point(-1, -2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(572, 175);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.Size = new System.Drawing.Size(471, 128);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
+            // 
+            // modal
+            // 
+            this.modal.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.modal.BackColor = System.Drawing.Color.Transparent;
+            this.modal.Image = ((System.Drawing.Image)(resources.GetObject("modal.Image")));
+            this.modal.Location = new System.Drawing.Point(1037, 12);
+            this.modal.Name = "modal";
+            this.modal.Size = new System.Drawing.Size(51, 50);
+            this.modal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.modal.TabIndex = 14;
+            this.modal.TabStop = false;
+            this.modal.Click += new System.EventHandler(this.modal_Click);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label1.Location = new System.Drawing.Point(639, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(392, 32);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Click this Icon for information";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label2.Location = new System.Drawing.Point(335, 601);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(396, 32);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "DON\'T INSERT YOUR COIN YET";
             // 
             // browse
             // 
@@ -113,6 +154,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1100, 700);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.modal);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.browse_button);
             this.Controls.Add(this.ejectbutton);
@@ -124,6 +168,7 @@
             this.Text = "browse";
             this.Load += new System.EventHandler(this.browse_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modal)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -135,5 +180,8 @@
         private System.Windows.Forms.Button ejectbutton;
         private System.Windows.Forms.Button browse_button;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox modal;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

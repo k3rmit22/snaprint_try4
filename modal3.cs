@@ -87,5 +87,12 @@ namespace snaprint_try4
             // Enable double buffering for this form
             this.DoubleBuffered = true;
         }
+
+        private void next_btn_Click(object sender, EventArgs e)
+        {
+            modal4 next = new modal4();
+            next.Show();
+            this.Close();
+        }
     }
 }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace snaprint_try4
 {
-    public partial class modal4 : Form
+    public partial class Report_modal : Form
     {
-        public modal4()
+        public Report_modal()
         {
             InitializeComponent();
             InitializeKioskMode();
@@ -37,20 +37,20 @@ namespace snaprint_try4
             // Enable double buffering for this form
             this.DoubleBuffered = true;
         }
-    
 
-    private void close_button_Click(object sender, EventArgs e)
+        int i;
+        private void Report_modal_Load(object sender, EventArgs e)
         {
-            this.Close();
-        }
 
-     
+            // Adjust initial position for animation
+            this.Location = new Point(this.Left, this.Top - 200); // Move the form up by 200 pixels
+            this.Opacity = 0; // Set initial opacity to 0 for a fade-in effect
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            modal3 prev= new modal3();
-            prev.Show();
-            this.Close();
+            // Set a shorter interval for the timer to make the animation appear faster
+            modalEffect_Timer.Interval = 20; // Adjust this value as needed
+
+            // Start the timer for animation
+            modalEffect_Timer.Start();
         }
 
         private void modalEffect_Timer_Tick(object sender, EventArgs e)
@@ -69,19 +69,6 @@ namespace snaprint_try4
             }
         }
 
-        int i;
-        private void modal4_Load(object sender, EventArgs e)
-        {
 
-            // Adjust initial position for animation
-            this.Location = new Point(this.Left, this.Top - 200); // Move the form up by 200 pixels
-            this.Opacity = 0; // Set initial opacity to 0 for a fade-in effect
-
-            // Set a shorter interval for the timer to make the animation appear faster
-            modalEffect_Timer.Interval = 20; // Adjust this value as needed
-
-            // Start the timer for animation
-            modalEffect_Timer.Start();
-        }
     }
 }

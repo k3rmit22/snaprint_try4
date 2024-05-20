@@ -70,19 +70,7 @@ namespace snaprint_try4
             }
         }
 
-        private void button_next_Click(object sender, EventArgs e)
-        {
-            modal6 next = new modal6();
-            next.Show();
-            this.Close();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            modal4 prev = new modal4();
-            prev.Show();
-            this.Close();
-        }
+      
 
         private void close_button_Click(object sender, EventArgs e)
         {

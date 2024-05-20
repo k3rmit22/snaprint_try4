@@ -437,8 +437,11 @@
     <Compile Include="modal9.Designer.cs">
       <DependentUpon>modal9.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReportDialog.cs">
+    <Compile Include="Report_modal.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report_modal.Designer.cs">
+      <DependentUpon>Report_modal.cs</DependentUpon>
     </Compile>
     <Compile Include="summary.cs">
       <SubType>Form</SubType>
@@ -502,8 +505,8 @@
     <EmbeddedResource Include="modal9.resx">
       <DependentUpon>modal9.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReportDialog.resx">
-      <DependentUpon>ReportDialog.cs</DependentUpon>
+    <EmbeddedResource Include="Report_modal.resx">
+      <DependentUpon>Report_modal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="summary.resx">
       <DependentUpon>summary.cs</DependentUpon>

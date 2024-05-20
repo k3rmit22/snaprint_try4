@@ -70,12 +70,6 @@ namespace snaprint_try4
             };
         }
 
-        private void button_next_Click(object sender, EventArgs e)
-        {
-            modal2 next = new modal2();
-            next.Show();
-            this.Close();
-           
-        }
+      
     }
 }

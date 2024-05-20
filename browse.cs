@@ -50,6 +50,7 @@ namespace snaprint_try4
         private void browse_Load(object sender, EventArgs e)
         {
 
+
         }
 
 
@@ -99,6 +100,12 @@ namespace snaprint_try4
                 cp.ExStyle = cp.ExStyle | 0x2000000;
                 return cp;
             }
+        }
+
+        private void modal_Click(object sender, EventArgs e)
+        {
+            modal2 show = new modal2();
+            show.Show();
         }
 
         /*
