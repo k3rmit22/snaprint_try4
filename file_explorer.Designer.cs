@@ -55,9 +55,10 @@
             this.listView1.ForeColor = System.Drawing.SystemColors.WindowText;
             this.listView1.HideSelection = false;
             this.listView1.LargeImageList = this.Iconlist;
-            this.listView1.Location = new System.Drawing.Point(44, 163);
+            this.listView1.Location = new System.Drawing.Point(59, 201);
+            this.listView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1022, 520);
+            this.listView1.Size = new System.Drawing.Size(1363, 640);
             this.listView1.SmallImageList = this.Iconlist;
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
@@ -78,9 +79,10 @@
             this.Gobutton.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Gobutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Gobutton.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gobutton.Location = new System.Drawing.Point(975, 115);
+            this.Gobutton.Location = new System.Drawing.Point(1300, 142);
+            this.Gobutton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Gobutton.Name = "Gobutton";
-            this.Gobutton.Size = new System.Drawing.Size(91, 42);
+            this.Gobutton.Size = new System.Drawing.Size(121, 52);
             this.Gobutton.TabIndex = 2;
             this.Gobutton.Text = "Go";
             this.Gobutton.UseVisualStyleBackColor = false;
@@ -94,9 +96,10 @@
             this.filenamelabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.filenamelabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.filenamelabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.filenamelabel.Location = new System.Drawing.Point(459, 130);
+            this.filenamelabel.Location = new System.Drawing.Point(612, 160);
+            this.filenamelabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.filenamelabel.Name = "filenamelabel";
-            this.filenamelabel.Size = new System.Drawing.Size(15, 13);
+            this.filenamelabel.Size = new System.Drawing.Size(20, 17);
             this.filenamelabel.TabIndex = 4;
             this.filenamelabel.Text = "--";
             // 
@@ -107,9 +110,10 @@
             this.filetypelabel.BackColor = System.Drawing.Color.Lavender;
             this.filetypelabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.filetypelabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.filetypelabel.Location = new System.Drawing.Point(327, 130);
+            this.filetypelabel.Location = new System.Drawing.Point(436, 160);
+            this.filetypelabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.filetypelabel.Name = "filetypelabel";
-            this.filetypelabel.Size = new System.Drawing.Size(15, 13);
+            this.filetypelabel.Size = new System.Drawing.Size(20, 17);
             this.filetypelabel.TabIndex = 6;
             this.filetypelabel.Text = "--";
             // 
@@ -121,9 +125,10 @@
             this.buttonhome.FlatAppearance.BorderSize = 0;
             this.buttonhome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonhome.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonhome.Location = new System.Drawing.Point(44, 115);
+            this.buttonhome.Location = new System.Drawing.Point(59, 142);
+            this.buttonhome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonhome.Name = "buttonhome";
-            this.buttonhome.Size = new System.Drawing.Size(91, 42);
+            this.buttonhome.Size = new System.Drawing.Size(121, 52);
             this.buttonhome.TabIndex = 9;
             this.buttonhome.Text = "Home";
             this.buttonhome.UseVisualStyleBackColor = false;
@@ -134,9 +139,10 @@
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 21);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 26);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(224, 79);
+            this.pictureBox1.Size = new System.Drawing.Size(299, 97);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
@@ -148,9 +154,10 @@
             this.Filepathtextbox.BackColor = System.Drawing.Color.Lavender;
             this.Filepathtextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Filepathtextbox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Filepathtextbox.Location = new System.Drawing.Point(158, 130);
+            this.Filepathtextbox.Location = new System.Drawing.Point(211, 160);
+            this.Filepathtextbox.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Filepathtextbox.Name = "Filepathtextbox";
-            this.Filepathtextbox.Size = new System.Drawing.Size(15, 13);
+            this.Filepathtextbox.Size = new System.Drawing.Size(20, 17);
             this.Filepathtextbox.TabIndex = 12;
             this.Filepathtextbox.Text = "--";
             // 
@@ -158,21 +165,23 @@
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox2.BackColor = System.Drawing.Color.Lavender;
-            this.pictureBox2.Location = new System.Drawing.Point(141, 115);
+            this.pictureBox2.Location = new System.Drawing.Point(188, 142);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(828, 42);
+            this.pictureBox2.Size = new System.Drawing.Size(1104, 52);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 13;
             this.pictureBox2.TabStop = false;
             // 
             // modal
             // 
-            this.modal.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.modal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.modal.BackColor = System.Drawing.Color.Transparent;
             this.modal.Image = ((System.Drawing.Image)(resources.GetObject("modal.Image")));
-            this.modal.Location = new System.Drawing.Point(1015, 34);
+            this.modal.Location = new System.Drawing.Point(1353, 42);
+            this.modal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.modal.Name = "modal";
-            this.modal.Size = new System.Drawing.Size(51, 50);
+            this.modal.Size = new System.Drawing.Size(68, 62);
             this.modal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.modal.TabIndex = 15;
             this.modal.TabStop = false;
@@ -184,9 +193,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label1.Location = new System.Drawing.Point(617, 43);
+            this.label1.Location = new System.Drawing.Point(823, 53);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(392, 32);
+            this.label1.Size = new System.Drawing.Size(497, 40);
             this.label1.TabIndex = 16;
             this.label1.Text = "Click this Icon for information";
             // 
@@ -197,18 +207,19 @@
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label2.Location = new System.Drawing.Point(366, 705);
+            this.label2.Location = new System.Drawing.Point(488, 868);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(396, 32);
+            this.label2.Size = new System.Drawing.Size(497, 40);
             this.label2.TabIndex = 14;
             this.label2.Text = "DON\'T INSERT YOUR COIN YET";
             // 
             // file_explorer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(247)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1110, 773);
+            this.ClientSize = new System.Drawing.Size(1480, 951);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.modal);
             this.Controls.Add(this.label2);
@@ -221,6 +232,7 @@
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.pictureBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "file_explorer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "file_explorer";
