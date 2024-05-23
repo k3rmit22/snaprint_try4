@@ -170,6 +170,13 @@ namespace snaprint_try4
             modal next = new modal();
             next.Show();
         }
+
+        private void ReportIssueButton_Click(object sender, EventArgs e)
+        {
+            Report_modal show = new Report_modal();
+            show.Show();
+        }
+
         protected override CreateParams CreateParams
         {
             get

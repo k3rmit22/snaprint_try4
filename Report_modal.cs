@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+
 
 namespace snaprint_try4
 {
     public partial class Report_modal : Form
     {
+        private bool messageSentSuccessfully = false;
         public Report_modal()
         {
             InitializeComponent();
@@ -69,6 +72,124 @@ namespace snaprint_try4
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string message = "Printer out of Paper, please check.";
+            DateTime currentDateTime = DateTime.Now;
 
+            string connectionString = "Server=localhost;Port=3306;Database=admin_user;Uid=root;Pwd=;";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "INSERT INTO tbl_reports (issue, datetime) VALUES (@message, NOW())";
+                    using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@message", message);
+                        cmd.ExecuteNonQuery();
+
+                        // Indicate the message was sent successfully
+                        messageSentSuccessfully = true;
+
+                        // Close the form after the message is sent
+                        this.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                }
+            }
+        }
+
+
+
+       
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string message = "Printer Error occured, Please check";
+            DateTime currentDateTime = DateTime.Now;
+
+            string connectionString = "Server=localhost;Port=3306;Database=admin_user;Uid=root;Pwd=;";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "INSERT INTO tbl_reports (issue, datetime) VALUES (@message, NOW())";
+                    using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@message", message);
+                        cmd.ExecuteNonQuery();
+
+                        // Indicate the message was sent successfully
+                        messageSentSuccessfully = true;
+
+                        // Close the form after the message is sent
+                        this.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                }
+            }
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string message = "Unknown Error occured, please check.";
+            DateTime currentDateTime = DateTime.Now;
+
+            string connectionString = "Server=localhost;Port=3306;Database=admin_user;Uid=root;Pwd=;";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "INSERT INTO tbl_reports (issue, datetime) VALUES (@message, NOW())";
+                    using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@message", message);
+                        cmd.ExecuteNonQuery();
+
+                        // Indicate the message was sent successfully
+                        messageSentSuccessfully = true;
+
+                        // Close the form after the message is sent
+                        this.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                }
+            }
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            base.OnFormClosed(e);
+
+            // Show the message box after the form is closed
+            if (messageSentSuccessfully)
+            {
+                MessageBox.Show("Message sent to admin successfully!");
+            }
+        }
+
+        private void close_button_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
+
+
+    
 }

@@ -39,10 +39,11 @@ namespace snaprint_try4
 
             // Set the selected file name
             this.selectedFileName = selectedFileName;
+            filename.Text = selectedFileName;
             Console.WriteLine($"  File Name: {selectedFileName}");
 
             // Display the selected file name in the filename TextBox
-            filename.Text = selectedFilePath;
+           // filename.Text = selectedFilePath;
             this.selectedFileName = selectedFileName;
             Console.WriteLine($"  File Name: {selectedFileName}");
             this.pdfData = pdfData;
@@ -602,7 +603,8 @@ namespace snaprint_try4
             this.Close();
         }
 
-        private void modal_Click(object sender, EventArgs e)
+
+        private void pictureBox3_Click(object sender, EventArgs e)
         {
             modal5 show = new modal5();
             show.Show();

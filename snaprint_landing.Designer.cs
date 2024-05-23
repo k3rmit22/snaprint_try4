@@ -58,10 +58,6 @@
             this.INSERT.Text = "PLEASE INSERT YOUR FLASH DRIVE";
             this.INSERT.Click += new System.EventHandler(this.label3_Click);
             // 
-            // timer1
-            // 
-            //this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // modal
             // 
             this.modal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -126,11 +122,11 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Bookman Old Style", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.label2.Location = new System.Drawing.Point(334, 637);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(458, 32);
+            this.label2.Size = new System.Drawing.Size(396, 32);
             this.label2.TabIndex = 13;
             this.label2.Text = "DON\'T INSERT YOUR COIN YET";
             // 
